@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/jpashop
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:  #Hibernate를 사용하면 데이터베이스가 변경되더라도 SQL 스크립트를 수정하는등의 작업을 할 필요 x
+      ddl-auto: create  #테이블 자동으로 생성
+    properties:
+      hibernate:
+        #show_sql: true   #systemout을 통해 출력
+        format_sql: true
+
+logging.level:
+  org.hibernate.SQL: debug   #로그를 통해 출력
+# org.hibernate.type: trace
