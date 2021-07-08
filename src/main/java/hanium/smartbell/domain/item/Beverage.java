@@ -11,5 +11,5 @@ import javax.persistence.Entity;
 @Getter @Setter
 public class Beverage extends Item {
     private String temparature;
-    private String size;
+    private int size;
 }

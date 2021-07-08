@@ -9,5 +9,5 @@ public class BeverageForm {
     private String name;
     private int price;
     private String temparature;
-    private String size;
+    private int size;
 }

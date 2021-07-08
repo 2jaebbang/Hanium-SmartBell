@@ -15,14 +15,14 @@ public class ItemController {
 
     @GetMapping(value = "/items/newBeverage")
     public String createBeverageForm(Model model) {
-        model.addAttribute("form", new BeverageForm());
-        return "items/itemForm";
+        //model.addAttribute("beverageForm", new BeverageForm());
+        return "items/BeverageForm";
     }
 
     @GetMapping(value = "/items/newFood")
     public String createFoodForm(Model model) {
-        model.addAttribute("form", new BeverageForm());
-        return "items/itemForm";
+        model.addAttribute("foodForm", new BeverageForm());
+        return "items/FoodForm";
     }
 
     @PostMapping(value = "/items/newBeverage")

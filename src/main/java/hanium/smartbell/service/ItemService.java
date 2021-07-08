@@ -41,7 +41,7 @@ public class ItemService {
     }
 
     @Transactional    //자동으로 데베에 업데이트.
-    public void updateBeverage(Long id, String name, int price, String size) {
+    public void updateBeverage(Long id, String name, int price, int size) {
         Beverage beverage = (Beverage) itemRepository.findOne(id);
         beverage.setName(name);
         beverage.setPrice(price);
