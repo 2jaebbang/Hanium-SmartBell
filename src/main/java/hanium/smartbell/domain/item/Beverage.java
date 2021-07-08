@@ -10,10 +10,6 @@ import javax.persistence.Entity;
 @DiscriminatorValue("B")
 @Getter @Setter
 public class Beverage extends Item {
-    private String capacity;
     private String temparature;
     private String size;
-
-
-
 }

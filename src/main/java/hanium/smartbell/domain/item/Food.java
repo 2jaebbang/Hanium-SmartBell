@@ -7,11 +7,8 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("E")
+@DiscriminatorValue("C")
 @Getter @Setter
-public class Etc extends Item {
-    private String capacity;
-    private String temparature;
-    private String size;
-
+public class Food extends Item {
+    private String gram;
 }
