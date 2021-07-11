@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrinkto-fit=no">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-
-    ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
   <!-- Custom styles for this template -->
   <link href="/css/jumbotron-narrow.css" rel="stylesheet">
@@ -17,6 +17,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <title>Smart Bell</title>
 </head>
+
 <body>
 <div class="container">
   <div class="header">
@@ -25,39 +26,59 @@
     </ul>
     <a href="/"><h3 class="text-muted">SMART BELL</h3></a>
   </div>
-
-  <form>
-    <div class="form-group">
-      <label>상품명</label>
-      <input type="text"  class="form-control"
-             placeholder="이름을 입력하세요">
-    </div>
-    <div class="form-group">
-      <label th:for="price">가격</label>
-      <input type="number" class="form-control"
-             placeholder="가격을 입력하세요">
-    </div>
-    <div class="form-group">
-      <label>사이즈업</label>
-      <input type="number" class="form-control" placeholder="사이즈업 가격을 입력하세요">
-    </div>
-
-    <p>
-    상품 사진
-    <p>
-    <div class="custom-file">
-      <input type="file" class="custom-file-input" id="customFile">
-      <label class="custom-file-label" for="customFile">사진 선택</label>
-    </div>
-    <p>
-    <p>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  <br/>
   <div>
-    <p>&copy; Smart Bell V1</p>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>음료</th>
+        <th>상품명</th>
+        <th>가격</th>
+        <th>사이즈업</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="item : ${items}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.stockQuantity}"></td>
+        <td>
+          <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
+             class="btn btn-primary" role="button">수정</a>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>푸드</th>
+        <th>상품명</th>
+        <th>가격</th>
+        <th>질량</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="item : ${items}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.price}"></td>
+        <td th:text="${item.stockQuantity}"></td>
+        <td>
+          <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}"
+             class="btn btn-primary" role="button">수정</a>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
   </div>
+
 </div> <!-- /container -->
 </body>
 </html>
