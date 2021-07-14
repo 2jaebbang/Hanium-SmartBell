@@ -26,7 +26,7 @@ public class ItemController {
     }
 
     @PostMapping(value = "/items/newBeverage")
-    public String createBeverage(BeverageForm form) {
+    public String createBeverage(@RequestBody BeverageForm form) {
         Beverage beverage = new Beverage();
         beverage.setName(form.getName());
         beverage.setPrice(form.getPrice());
@@ -38,7 +38,7 @@ public class ItemController {
     }
 
     @PostMapping(value = "/items/newFood")
-    public String createFood(FoodForm form) {
+    public String createFood(@RequestBody FoodForm form) {
         Food food = new Food();
         food.setName(form.getName());
         food.setPrice(form.getPrice());
