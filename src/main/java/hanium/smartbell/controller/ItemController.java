@@ -6,10 +6,7 @@ import hanium.smartbell.domain.item.Item;
 import hanium.smartbell.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -72,51 +69,45 @@ public class ItemController {
     /**
      * 상품 수정 폼
      */
-//    @GetMapping(value = "/items/{itemId}/edit")
-//    public String updateItemForm(@PathVariable("itemId") Long itemId, Model model) {
-//
-//        if(itemService.findOne(itemId).getCategory().equals("beverage")){
-//            Beverage beverageItem = (Beverage) itemService.findOne(itemId);
-//
-//            BeverageForm beverageForm = new BeverageForm();
-//            beverageForm.setId(beverageItem.getId());
-//            beverageForm.setName(beverageItem.getName());
-//            beverageForm.setPrice(beverageItem.getPrice());
-//            beverageForm.setSize(beverageItem.getSize());
-//
-//            model.addAttribute("beverageForm", beverageForm);
-//
-//            return "items/updateBeverageForm";
-//        }
-//        else {
-//            Food foodItem = (Food) itemService.findOne(itemId);
-//
-//            FoodForm foodForm = new FoodForm();
-//            foodForm.setId(foodItem.getId());
-//            foodForm.setName(foodItem.getName());
-//            foodForm.setPrice(foodItem.getPrice());
-//            foodForm.setGram(foodItem.getGram());
-//
-//            model.addAttribute("foodForm", foodForm);
-//
-//            return "items/updateFoodForm";
-//        }
-//
-//    }
+    @GetMapping(value = "/items/{itemId}/edit")
+    public String updateItemForm(@PathVariable("itemId") Long itemId) {
+        if(itemService.findOne(itemId).getCategory().equals("beverage")) {
+            return "items/UpdateBForm";
+        } else{
+            return "items/UpdateFForm";
+        }
+    }
+
+    @GetMapping(value = "items/UpdateBForm")
+    @ResponseBody
+    public Item updateBeverageForm(@PathVariable("itemId") Long itemId) {
+            Beverage beverageItem = (Beverage) itemService.findOne(itemId);
+
+            return beverageItem;
+        }
+
+    @GetMapping(value = "items/UpdateFForm")
+    @ResponseBody
+    public Item updateFoodForm(@PathVariable("itemId") Long itemId) {
+        Food foodItem = (Food) itemService.findOne(itemId);
+
+        return foodItem;
+    }
+
 
     /**
-     * 상품 수정, 권장 코드
+     * 상품 수정
      */
 
-//    @PutMapping(value = "/items/{itemId}/edit")
-//    public String updateItem(@PathVariable Long itemId, @RequestBody BeverageForm beverageForm, @RequestBody FoodForm foodForm) {
-//        if(itemService.findOne(itemId).getCategory().equals("beverage")){
-//            itemService.updateBeverage(beverageForm.getId(), beverageForm.getName(), beverageForm.getPrice(), beverageForm.getSize());
-//            return "redirect:/items";
-//            }
-//        else {
-//            itemService.updateFood(foodForm.getId(), foodForm.getName(), foodForm.getPrice(), foodForm.getGram());
-//            return "redirect:/items";
-//        }
-//    }
+    @PutMapping(value = "/items/{itemId}/edit")
+    public String updateItem(@PathVariable Long itemId, @RequestBody BeverageForm beverageForm, @RequestBody FoodForm foodForm) {
+        if(itemService.findOne(itemId).getCategory().equals("beverage")){
+            itemService.updateBeverage(beverageForm.getId(), beverageForm.getName(), beverageForm.getPrice(), beverageForm.getSize());
+            return "items/UpdateBForm";
+            }
+        else {
+            itemService.updateFood(foodForm.getId(), foodForm.getName(), foodForm.getPrice(), foodForm.getGram());
+            return "items/UpdateFForm";
+        }
+    }
 }
