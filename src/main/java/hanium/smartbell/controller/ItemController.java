@@ -1,6 +1,8 @@
 package hanium.smartbell.controller;
 
-import hanium.smartbell.domain.item.*;
+import hanium.smartbell.domain.item.Beverage;
+import hanium.smartbell.domain.item.Food;
+import hanium.smartbell.domain.item.Item;
 import hanium.smartbell.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -8,20 +10,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
     private final ItemService itemService;
 
     @GetMapping(value = "/items/newBeverage")
-    public String createBeverageForm(Model model) {
-        //model.addAttribute("beverageForm", new BeverageForm());
+    public String createBeverageForm() {
         return "items/BeverageForm";
     }
 
     @GetMapping(value = "/items/newFood")
-    public String createFoodForm(Model model) {
-        model.addAttribute("foodForm", new BeverageForm());
+    public String createFoodForm() {
         return "items/FoodForm";
     }
 
@@ -34,7 +35,7 @@ public class ItemController {
         beverage.setTemparature(form.getTemparature());
         beverage.setCategory("beverage");
         itemService.saveItem(beverage);
-        return "redirect:/items";
+        return "/items/itemList";
     }
 
     @PostMapping(value = "/items/newFood")
@@ -45,18 +46,26 @@ public class ItemController {
         food.setGram(form.getGram());
         food.setCategory("food");
         itemService.saveItem(food);
-        return "redirect:/items";
+        return "/items/itemList";
     }
 
     /**
      * 상품 목록
      */
     @GetMapping(value = "/items")
-    public String list(Model model) {
-        List<Item> items = itemService.findItems();
-        model.addAttribute("items", items);
+    public String itemList() {
         return "items/itemList";
     }
+
+    @GetMapping(value = "/items/itemList")
+    @ResponseBody
+    public List<Item> items() {
+        List<Item> item = itemService.findItems();
+
+        return item;
+    }
+
+
 
     /**
      * 상품 수정 폼
