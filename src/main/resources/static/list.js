@@ -1,14 +1,17 @@
+
 function list() {
-    fetch("/items/itemList", {
+    fetch("/items/itemListJson", {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
+
         }
     })
         .then( ( response) => response.json())
         .then((data) => {
             console.log(data);
             for(let i=0; i<data.length; i++){
+                let id = data[i]['id'];
                 let name = data[i]['name'];
                 let price = data[i]['price'];
                 let size = data[i]['size'];
@@ -40,8 +43,8 @@ function list() {
                 a.classList.add("btn-primary");
                 a.setAttribute("role","button");
                 a.innerText = "수정";
+                //a.onclick = temp(id);
                 td5.appendChild(a);
-
 
 
                 if(data[i]['category']==="beverage"){

@@ -57,7 +57,7 @@ public class ItemController {
     }
 
 
-    @GetMapping(value = "/items/itemList")
+    @GetMapping(value = "/items/itemListJson")
     @ResponseBody
     public List<Item> items() {
         List<Item> item = itemService.findItems();
@@ -69,30 +69,31 @@ public class ItemController {
     /**
      * 상품 수정 폼
      */
-    @GetMapping(value = "/items/{itemId}/edit")
-    public String updateItemForm(@PathVariable("itemId") Long itemId) {
-        if(itemService.findOne(itemId).getCategory().equals("beverage")) {
-            return "items/UpdateBForm";
-        } else{
-            return "items/UpdateFForm";
-        }
-    }
+//    @GetMapping(value = "/items/{itemId}/edit")
+//    public String updateItemForm(@PathVariable("itemId") Long itemId) {
+//        if(itemService.findOne(itemId).getCategory().equals("beverage")) {
+//            return "items/UpdateBForm";
+//        } else{
+//            return "items/UpdateFForm";
+//        }
+//    }
 
-    @GetMapping(value = "items/UpdateBForm")
-    @ResponseBody
-    public Item updateBeverageForm(@PathVariable("itemId") Long itemId) {
-            Beverage beverageItem = (Beverage) itemService.findOne(itemId);
 
-            return beverageItem;
-        }
+//    @GetMapping(value = "/items/UpdateBB")
+//    @ResponseBody
+//    public Item updateBeverageForm(@PathVariable("itemId") Long itemId) {
+//            Beverage beverageItem = (Beverage) itemService.findOne(itemId);
+//
+//            return beverageItem;
+//        }
 
-    @GetMapping(value = "items/UpdateFForm")
-    @ResponseBody
-    public Item updateFoodForm(@PathVariable("itemId") Long itemId) {
-        Food foodItem = (Food) itemService.findOne(itemId);
-
-        return foodItem;
-    }
+//    @GetMapping(value = "/items/{itemId}/edit")
+//    @ResponseBody
+//    public Item updateFoodForm(@PathVariable("itemId") Long itemId) {
+//        Food foodItem = (Food) itemService.findOne(itemId);
+//
+//        return foodItem;
+//    }
 
 
     /**
@@ -100,14 +101,13 @@ public class ItemController {
      */
 
     @PutMapping(value = "/items/{itemId}/edit")
-    public String updateItem(@PathVariable Long itemId, @RequestBody BeverageForm beverageForm, @RequestBody FoodForm foodForm) {
+    public Long updateItem(@PathVariable Long itemId, @RequestBody BeverageForm beverageForm, @RequestBody FoodForm foodForm) {
         if(itemService.findOne(itemId).getCategory().equals("beverage")){
             itemService.updateBeverage(beverageForm.getId(), beverageForm.getName(), beverageForm.getPrice(), beverageForm.getSize());
-            return "items/UpdateBForm";
-            }
+        }
         else {
             itemService.updateFood(foodForm.getId(), foodForm.getName(), foodForm.getPrice(), foodForm.getGram());
-            return "items/UpdateFForm";
         }
+        return itemId;
     }
 }
