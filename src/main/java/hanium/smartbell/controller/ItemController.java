@@ -79,13 +79,18 @@ public class ItemController {
 //    }
 
 
-//    @GetMapping(value = "/items/UpdateBB")
+//    @GetMapping(value = "/items/{itemId}/edit")
 //    @ResponseBody
 //    public Item updateBeverageForm(@PathVariable("itemId") Long itemId) {
 //            Beverage beverageItem = (Beverage) itemService.findOne(itemId);
 //
 //            return beverageItem;
 //        }
+
+    @GetMapping(value = "/items/{itemId}/edit")
+    public String updateBeverageForm(@PathVariable("itemId") Long itemId) {
+        return "items/UpdateBForm";
+    }
 
 //    @GetMapping(value = "/items/{itemId}/edit")
 //    @ResponseBody
@@ -100,14 +105,14 @@ public class ItemController {
      * 상품 수정
      */
 
-    @PutMapping(value = "/items/{itemId}/edit")
-    public Long updateItem(@PathVariable Long itemId, @RequestBody BeverageForm beverageForm, @RequestBody FoodForm foodForm) {
+    @PostMapping(value = "/items/{itemId}/edit")
+    public String updateItem(@PathVariable Long itemId, BeverageForm beverageForm, FoodForm foodForm) {
         if(itemService.findOne(itemId).getCategory().equals("beverage")){
             itemService.updateBeverage(beverageForm.getId(), beverageForm.getName(), beverageForm.getPrice(), beverageForm.getSize());
         }
         else {
             itemService.updateFood(foodForm.getId(), foodForm.getName(), foodForm.getPrice(), foodForm.getGram());
         }
-        return itemId;
+        return "/items/UpdateBForm";
     }
 }

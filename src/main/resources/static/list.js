@@ -1,3 +1,53 @@
+let idid = 0;
+
+function tt(i){
+    idid = i;
+}
+
+function BForm() {
+    fetch("/items/UpdateBB",  {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+        .then( ( response) => response.text())
+        .then((data) => {
+            console.log(data);
+
+            let name = data[id]['name'];
+            let price = data[id]['price'];
+            let size = data[id]['size'];
+            let gram = data[id]['gram'];
+
+
+            document.getElementById("updateBName").value = name;
+            document.getElementById("updateBPrice").value = price;
+            document.getElementById("updateBSize").value = size;
+        })
+}
+
+function updateB() {
+    let beverageName = document.getElementById("updateBName").value;
+    let beveragePrice = document.getElementById("updateBPrice").value;
+    let beverageSize = document.getElementById("updateBSize").value;
+
+    fetch(`/items/${itemid}/edit`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: beverageName,
+            price: beveragePrice,
+            size: beverageSize,
+        }),
+    })
+        .then((response) => response.json())
+        .then((form) => console.log(form));
+
+}
+
 
 function list() {
     fetch("/items/itemListJson", {
@@ -11,7 +61,7 @@ function list() {
         .then((data) => {
             console.log(data);
             for(let i=0; i<data.length; i++){
-                let id = data[i]['id'];
+                let iid = data[i]['id'];
                 let name = data[i]['name'];
                 let price = data[i]['price'];
                 let size = data[i]['size'];
@@ -43,7 +93,7 @@ function list() {
                 a.classList.add("btn-primary");
                 a.setAttribute("role","button");
                 a.innerText = "수정";
-                //a.onclick = temp(id);
+
                 td5.appendChild(a);
 
 
@@ -78,5 +128,3 @@ function list() {
             }
         })
 }
-
-list();

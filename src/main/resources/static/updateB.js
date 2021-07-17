@@ -23,27 +23,25 @@
 //         })
 // }
 
-function updateB() {
-     let beverageName = document.getElementById("beverageName").value;
-     let beveragePrice = document.getElementById("beveragePrice").value;
-     let beverageSize = document.getElementById("beverageSize").value;
-
-     let test = this.pro
-
-    fetch(`/items/${id}/edit`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name: beverageName,
-            price: beveragePrice,
-            size: beverageSize,
-        }),
-    })
-        .then((response) => response.json())
-        .then((form) => console.log(form));
-
-}
+// function updateB(test) {
+//      let beverageName = document.getElementById("beverageName").value;
+//      let beveragePrice = document.getElementById("beveragePrice").value;
+//      let beverageSize = document.getElementById("beverageSize").value;
+//
+//     fetch(`/items/${test}/edit`, {
+//         method: "PUT",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//             name: beverageName,
+//             price: beveragePrice,
+//             size: beverageSize,
+//         }),
+//     })
+//         .then((response) => response.json())
+//         .then((form) => console.log(form));
+//
+// }
 
 //BForm();
