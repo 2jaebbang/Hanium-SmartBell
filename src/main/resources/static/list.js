@@ -1,51 +1,51 @@
-let idid = 0;
 
-function tt(i){
-    idid = i;
-}
-
-function BForm() {
-    fetch("/items/UpdateBB",  {
+function BForm(itemId) {
+    fetch(`/items/${itemId}`,  {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
     })
-        .then( ( response) => response.text())
+        .then( ( response) => response.json())
         .then((data) => {
             console.log(data);
 
-            let name = data[id]['name'];
-            let price = data[id]['price'];
-            let size = data[id]['size'];
-            let gram = data[id]['gram'];
+            let name = data['name'];
+            let price = data['price'];
+            let size = data['size'];
+            let gram = data['gram'];
+
+            console.log(name);
+            console.log(price);
+            console.log(size);
 
 
-            document.getElementById("updateBName").value = name;
-            document.getElementById("updateBPrice").value = price;
-            document.getElementById("updateBSize").value = size;
+             document.getElementById("updateBName").value = name;
+             document.getElementById("updateBPrice").value = price;
+             document.getElementById("updateBSize").value = size;
         })
 }
 
-function updateB() {
+
+function updateB(itemId) {
+    console.log(itemId);
     let beverageName = document.getElementById("updateBName").value;
     let beveragePrice = document.getElementById("updateBPrice").value;
     let beverageSize = document.getElementById("updateBSize").value;
 
-    fetch(`/items/${itemid}/edit`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name: beverageName,
-            price: beveragePrice,
-            size: beverageSize,
-        }),
-    })
-        .then((response) => response.json())
-        .then((form) => console.log(form));
-
+        fetch(`/items/${itemId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: beverageName,
+                price: beveragePrice,
+                size: beverageSize,
+            }),
+        })
+            .then((response) => response.json())
+            .then((form) => console.log(form));
 }
 
 
@@ -59,9 +59,7 @@ function list() {
     })
         .then( ( response) => response.json())
         .then((data) => {
-            console.log(data);
             for(let i=0; i<data.length; i++){
-                let iid = data[i]['id'];
                 let name = data[i]['name'];
                 let price = data[i]['price'];
                 let size = data[i]['size'];
