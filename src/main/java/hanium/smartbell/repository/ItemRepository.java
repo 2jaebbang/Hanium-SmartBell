@@ -16,7 +16,7 @@ public class ItemRepository {
         if (item.getId() == null) {    //처음에 아무 아이디 없으면(새로 생성)
             em.persist(item);
         } else {
-            em.merge(item);    //업데이트랑 비슷
+            em.merge(item);    //업데이트
         }
     }
     public Item findOne(Long id) {
@@ -26,3 +26,4 @@ public class ItemRepository {
         return em.createQuery("select i from Item i",Item.class).getResultList();
     }
 }
+
