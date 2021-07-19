@@ -12,10 +12,15 @@ spring:
       hibernate:
         #show_sql: true   #systemout을 통해 출력
         format_sql: true
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 
 
 logging.level:
   org.hibernate.SQL: debug   #로그를 통해 출력
   org.hibernate.type: trace
+
 
 # static resource

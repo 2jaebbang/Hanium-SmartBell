@@ -69,31 +69,38 @@ public class ItemController {
      * 상품 수정 폼
      */
     @GetMapping(value = "/items/{itemId}/edit")
-    public String updateBForm() {
-        return "items/UpdateBForm";
+    public String updateForm(@PathVariable("itemId") Long itemId) {
+        if (itemService.findOne(itemId).getCategory().equals("beverage")) {
+            return "items/UpdateBForm";         //음료수정 폼으로 이동
+        } else {
+            return "items/UpdateFForm";         //푸드수정 폼으로 이동
+        }
     }
 
     @GetMapping(value = "/items/{itemId}")
     @ResponseBody
-    public Beverage updateB(@PathVariable("itemId") Long itemId) {
-        Beverage beverageItem = (Beverage) itemService.findOne(itemId);
-
-        return beverageItem;
+    public Item update(@PathVariable("itemId") Long itemId) {           //수정폼에서 기존 값들을 출력하기 위함
+        if (itemService.findOne(itemId).getCategory().equals("beverage")) {
+            Beverage beverageItem = (Beverage) itemService.findOne(itemId);
+            return beverageItem;
+        } else {
+            Food foodItem = (Food) itemService.findOne(itemId);
+            return foodItem;
+        }
     }
 
 
     /**
      * 상품 수정
      */
-    @PutMapping(value = "/items/{itemId}")
-    public String updateItem(@PathVariable Long itemId, @RequestBody BeverageForm beverageForm, @RequestBody FoodForm foodForm) {
+    @PostMapping(value = "/items/{itemId}/edit")
+    public String updateItem(@PathVariable("itemId") Long itemId, @RequestBody BeverageForm beverageForm) {
         if (itemService.findOne(itemId).getCategory().equals("beverage")) {
-            itemService.updateBeverage(beverageForm.getId(), beverageForm.getName(), beverageForm.getPrice(), beverageForm.getSize());
-        } else {
-            itemService.updateFood(foodForm.getId(), foodForm.getName(), foodForm.getPrice(), foodForm.getGram());
+            itemService.updateBeverage(itemId, beverageForm.getName(), beverageForm.getPrice(), beverageForm.getSize());
         }
         return "/items/itemList";
     }
+
 }
 
 

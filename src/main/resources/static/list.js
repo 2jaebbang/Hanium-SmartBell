@@ -15,26 +15,45 @@ function BForm(itemId) {
             let size = data['size'];
             let gram = data['gram'];
 
-            console.log(name);
-            console.log(price);
-            console.log(size);
-
-
              document.getElementById("updateBName").value = name;
              document.getElementById("updateBPrice").value = price;
              document.getElementById("updateBSize").value = size;
         })
 }
 
+function FForm(itemId) {
+    fetch(`/items/${itemId}`,  {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+        .then( ( response) => response.json())
+        .then((data) => {
+            console.log(data);
 
-function updateB(itemId) {
-    console.log(itemId);
+            let name = data['name'];
+            let price = data['price'];
+            let gram = data['gram'];
+
+            document.getElementById("updateFName").value = name;
+            document.getElementById("updateFPrice").value = price;
+            document.getElementById("updateFGram").value = gram;
+        })
+}
+
+
+function updateB() {
+    let url = window.location.pathname;       //현재 url주소
+    let itemId = url.split('/');
+    console.log("updateB");
+    console.log(itemId[2]);          //itemId[2] <- 주소에서 itemId 값
     let beverageName = document.getElementById("updateBName").value;
     let beveragePrice = document.getElementById("updateBPrice").value;
     let beverageSize = document.getElementById("updateBSize").value;
 
-        fetch(`/items/${itemId}`, {
-            method: "PUT",
+        fetch(`http://localhost:8080/items/${itemId[2]}/edit`, {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
