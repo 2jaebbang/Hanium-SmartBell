@@ -94,9 +94,11 @@ public class ItemController {
      * 상품 수정
      */
     @PostMapping(value = "/items/{itemId}/edit")
-    public String updateItem(@PathVariable("itemId") Long itemId, @RequestBody BeverageForm beverageForm) {
+    public String updateItem(@PathVariable("itemId") Long itemId, @RequestBody ItemForm itemForm) {
         if (itemService.findOne(itemId).getCategory().equals("beverage")) {
-            itemService.updateBeverage(itemId, beverageForm.getName(), beverageForm.getPrice(), beverageForm.getSize());
+            itemService.updateBeverage(itemId, itemForm.getName(), itemForm.getPrice(), itemForm.getSize());
+        } else {
+            itemService.updateFood(itemId, itemForm.getName(), itemForm.getPrice(), itemForm.getGram());
         }
         return "/items/itemList";
     }
