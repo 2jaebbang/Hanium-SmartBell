@@ -44,7 +44,7 @@ public class Order {
     }
 
     //==비즈니스 로직==//
-    /** 주문 취소 */
+    /** 제조완료 */
     public void complete() {
         this.setStatus(OrderStatus.COMPLETED);
     }
