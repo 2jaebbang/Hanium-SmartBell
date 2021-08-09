@@ -52,7 +52,7 @@ public class Order {
     }
 
     /** 수령완료 */
-    public void recieved() {
+    public void recieve() {
         this.setStatus(OrderStatus.RECIEVED);
     }
 

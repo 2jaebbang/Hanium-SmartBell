@@ -23,13 +23,13 @@ public class OrderService {
      * 주문
      */
     @Transactional
-    public Long order(Long memberId, Long itemId, int count) {
+    public Long order(Long itemId, int amount) {
 
         //엔티티 조회
         Item item = itemRepository.findOne(itemId);
 
         //주문상품 생성
-        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
+        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), amount);
 
         //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
         Order order = Order.createOrder(orderItem);
@@ -40,14 +40,25 @@ public class OrderService {
     }
 
     /**
-     * 주문 취소
+     * 제조 완료
      */
     @Transactional
-    public void cancelOrder(Long orderId) {
+    public void completeOrder(Long orderId) {
         //주문 엔티티 조회
         Order order = orderRepository.findOne(orderId);
-        //주문 취소
+        //제조 완료
         order.complete();
+    }
+
+    /**
+     * 수령 완료
+     */
+    @Transactional
+    public void receiveOrder(Long orderId) {
+        //주문 엔티티 조회
+        Order order = orderRepository.findOne(orderId);
+        //제조 완료
+        order.recieve();
     }
 
 
