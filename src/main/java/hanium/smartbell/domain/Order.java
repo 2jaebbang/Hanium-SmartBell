@@ -23,7 +23,7 @@ public class Order {
 
     private OrderStatus status; //주문상태 [ORDERED, COMPLETED, RECIEVED]
 
-    private Integer totalPrice;
+    private int totalPrice;
 
 
     //==연관관계 메서드==//
