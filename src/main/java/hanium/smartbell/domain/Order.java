@@ -5,8 +5,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="orders")
@@ -17,16 +15,19 @@ public class Order {
     @Column(name="order_id")
     private Long id;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> orderItems = new ArrayList<>();
+    private String guestId;
+
+    private String url;
 
     private LocalDateTime orderDate; //주문시간
-    private OrderStatus status; //주문상태 [ORDERED, COMPLETED]
+
+    private OrderStatus status; //주문상태 [ORDERED, COMPLETED, RECIEVED]
+
+    private Integer totalPrice;
 
 
     //==연관관계 메서드==//
     public void addOrderItem(OrderItem orderItem) {
-        orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
 
@@ -34,11 +35,12 @@ public class Order {
     //==생성 메서드==//
     public static Order createOrder(OrderItem... orderItems) { //... <-여러개  넘김
         Order order = new Order();
-
         for (OrderItem orderItem : orderItems) {
             order.addOrderItem(orderItem);
+            order.totalPrice += orderItem.getTotalPrice();
         }
-        order.setStatus(OrderStatus.ORDERED);
+
+        order.setStatus(OrderStatus.OREDERD);
         order.setOrderDate(LocalDateTime.now());
         return order;
     }
@@ -49,13 +51,15 @@ public class Order {
         this.setStatus(OrderStatus.COMPLETED);
     }
 
+    /** 수령완료 */
+    public void recieved() {
+        this.setStatus(OrderStatus.RECIEVED);
+    }
+
+
     //==조회 로직==//
     /** 전체 주문 가격 조회 */
     public int getTotalPrice() {
-        int totalPrice = 0;
-        for (OrderItem orderItem : orderItems) {
-            totalPrice += orderItem.getTotalPrice();
-        }
-        return totalPrice;
+        return getTotalPrice();
     }
 }
