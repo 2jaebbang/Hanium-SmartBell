@@ -5,11 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "order_item")
 @Getter @Setter
-public class OrderItem {
+public class OrderItem implements Serializable {
 
     @Id @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")

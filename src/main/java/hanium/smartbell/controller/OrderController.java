@@ -1,7 +1,6 @@
 package hanium.smartbell.controller;
 
 import hanium.smartbell.domain.Order;
-import hanium.smartbell.domain.item.Item;
 import hanium.smartbell.repository.OrderSearch;
 import hanium.smartbell.service.ItemService;
 import hanium.smartbell.service.OrderService;
@@ -21,12 +20,12 @@ public class OrderController {
     private final ItemService itemService;
     private final OrderService orderService;
 
-    @GetMapping(value = "/items/itemListJson")
-    @ResponseBody
-    public List<Item> items() {
-        List<Item> item = itemService.findItems();
-        return item;
-    }
+//    @GetMapping(value = "/items/itemListJson")
+//    @ResponseBody
+//    public List<Item> items() {
+//        List<Item> item = itemService.findItems();
+//        return item;
+//    }
 
     @GetMapping(value = "/order")
     public String createOrderForm() {
