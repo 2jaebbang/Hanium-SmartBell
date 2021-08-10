@@ -1,4 +1,4 @@
-function list() {
+function order() {
     fetch("/items/itemListJson", {
         headers: {
             'Content-Type': 'application/json',
@@ -10,56 +10,160 @@ function list() {
         .then((data) => {
             for(let i=0; i<data.length; i++){
                 let name = data[i]['name'];
-                let price = data[i]['price'];
-                let size = data[i]['size'];
-                let gram = data[i]['gram'];
-
 
                 //beverage 테이블
-                let tr1 =  document.createElement("tr");
-                document.getElementById("beverageTable").appendChild(tr1);
+                let trBev =  document.createElement("tr");
+                document.getElementById("beverageTable").appendChild(trBev);
 
                 //food 테이블
-                let tr2 =  document.createElement("tr");
-                document.getElementById("foodTable").appendChild(tr2);
+                let trFood =  document.createElement("tr");
+                document.getElementById("foodTable").appendChild(trFood);
 
-                let td0 = document.createElement("td");
-                td0.innerText = ">사진<";
-                let td1 = document.createElement("td");
-                td1.innerText = `${name}`;
-                let td2 = document.createElement("td");
-                td2.innerText = `${price}원`;
-                let td3 = document.createElement("td");
-                td3.innerText = `${size}원`;
-                let td4 = document.createElement("td");
-                td4.innerText = `${gram}g`;
-                let td5 = document.createElement("td");
-                let a = document.createElement("a");
-                a.href=`/items/${data[i]['id']}/edit`;
-                a.classList.add("btn");
-                a.classList.add("btn-primary");
-                a.setAttribute("role","button");
-                a.innerText = "수정";
 
-                td5.appendChild(a);
+                //이름
+                let tdName = document.createElement("td");
+                tdName.innerText = `${name}`;
+
+                //beverage 온도
+                let tdBevTemp = document.createElement("td");
+
+                let divT = document.createElement("div");
+
+                divT.classList.add("btn-check");
+                divT.setAttribute("role","group");
+                divT.ariaLabel = "Basic radio toggle button group";
+
+                let inputT1 = document.createElement("input");
+                inputT1.type="radio";
+                inputT1.classList.add("btn-check");
+                inputT1.name="btnradioT";
+                inputT1.id="btnradioT1";
+                inputT1.autocomplete="off";
+                document.getElementById("btnradio1").checked = "true";
+
+                let inputT2 = document.createElement("input");
+                inputT2.type="radio";
+                inputT2.classList.add("btn-check");
+                inputT2.name="btnradioT";
+                inputT2.id="btnradioT2";
+                inputT2.autocomplete="off";
+
+                let labelT1 = document.createElement("label");
+                labelT1.classList.add("btn");
+                labelT1.classList.add("btn-outline-primary");
+                labelT1.htmlFor = "btnradioT1";
+                labelT1.innerText = "HOT";
+
+                let labelT2 = document.createElement("label");
+                labelT2.classList.add("btn");
+                labelT2.classList.add("btn-outline-primary");
+                labelT2.htmlFor = "btnradioT2";
+                labelT2.innerText = "COLD";
+
+                divT.appendChild(inputT1);
+                divT.appendChild(labelT1);
+                divT.appendChild(inputT2);
+                divT.appendChild(labelT2);
+                tdBevTemp.appendChild(divT);
+
+
+                //beverage 사이즈
+                let tdBevSize = document.createElement("td");
+
+                let divS = document.createElement("div");
+
+                divS.classList.add("btn-check");
+                divS.setAttribute("role","group");
+                divS.ariaLabel = "Basic radio toggle button group";
+
+                let inputS1 = document.createElement("input");
+                inputS1.type="radio";
+                inputS1.classList.add("btn-check");
+                inputS1.name="btnradioS";
+                inputS1.id="btnradioS1";
+                inputS1.autocomplete="off";
+                document.getElementById("btnradio3").checked = "true";
+
+                let inputS2 = document.createElement("input");
+                inputS2.type="radio";
+                inputS2.classList.add("btn-check");
+                inputS2.name="btnradioS";
+                inputS2.id="btnradioS2";
+                inputS2.autocomplete="off";
+
+                let inputS3 = document.createElement("input");
+                inputS3.type="radio";
+                inputS3.classList.add("btn-check");
+                inputS3.name="btnradioS";
+                inputS3.id="btnradioS3";
+                inputS3.autocomplete="off";
+
+                let labelS1 = document.createElement("label");
+                labelS1.classList.add("btn");
+                labelS1.classList.add("btn-outline-primary");
+                labelS1.htmlFor = "btnradioS1";
+                labelS1.innerText = "Tall";
+
+                let labelS2 = document.createElement("label");
+                labelS2.classList.add("btn");
+                labelS2.classList.add("btn-outline-primary");
+                labelS2.htmlFor = "btnradioS2";
+                labelS2.innerText = "Grande";
+
+                let labelS3 = document.createElement("label");
+                labelS3.classList.add("btn");
+                labelS3.classList.add("btn-outline-primary");
+                labelS3.htmlFor = "btnradioS3";
+                labelS3.innerText = "Venti";
+
+                divS.appendChild(inputS1);
+                divS.appendChild(labelS1);
+                divS.appendChild(inputS2);
+                divS.appendChild(labelS2);
+                divS.appendChild(inputS3);
+                divS.appendChild(labelS3);
+                tdBevSize.appendChild(divS);
+
+
+                //수량선택
+                let tdAmount = document.createElement("td");
+                let select = document.createElement("select");
+
+                let amount = [];
+                amount.push("수량선택");
+
+                for (let i = 1; i <= 10; i++) {
+                    let option = document.createElement("option");
+                    amount.push(i);
+                    select.appendChild(option);
+                    option.innerText=amount[i];
+                }
+
+                tdAmount.appendChild(select);
+
+
+                //ok버튼
+                let tdOk = document.createElement("td");
+                let btn = document.createElement("button");
+                tdOk.classList.add("btn-group");
+                tdOk.appendChild(btn);
+
 
 
                 if(data[i]['category']==="beverage"){
-                    tr1.appendChild(td0);
-                    tr1.appendChild(td1);
-                    tr1.appendChild(td2);
-                    tr1.appendChild(td3);
-                    tr1.appendChild(td5);
+                    trBev.appendChild(tdName);
+                    trBev.appendChild(tdBevTemp);
+                    trBev.appendChild(tdBevSize);
+                    trBev.appendChild(tdAmount);
+                    trBev.appendChild(tdOk);
                 } else {
-                    tr2.appendChild(td0);
-                    tr2.appendChild(td1);
-                    tr2.appendChild(td2);
-                    tr2.appendChild(td4);
-                    tr2.appendChild(td5);
+                    trFood.appendChild(tdName);
+                    trFood.appendChild(tdAmount);
+                    trFood.appendChild(tdOk);
                 }
 
-                document.getElementById("beverageTable").appendChild(tr1);
-                document.getElementById("foodTable").appendChild(tr2);
+                document.getElementById("beverageTable").appendChild(trBev);
+                document.getElementById("foodTable").appendChild(trFood);
 
             }
         })
