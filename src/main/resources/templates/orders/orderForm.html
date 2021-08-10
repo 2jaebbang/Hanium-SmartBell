@@ -1,10 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-
+      ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <script src="../list.js"></script>
+
+    <title>THINK OF BELL</title>
+    <style>
+        .btn-group button {
+            background-color: #FFFFFF; /* white background */
+            border: 2px solid black; /* blacl border */
+            color: black; /* White text */
+            padding: 4px 8px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            float: left; /* Float the buttons side by side */
+            width: 45px;
+            height: 35px;
+            text-valign: center;
+        }
+
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .btn-group button:not(:last-child) {
+            border-right: none; /* Prevent double borders */
+        }
+
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: #FFFFAF;
+        }
+        .btn-group button:clicked{
+            background-color: black;
+        }
+    </style>
+</head>
+
+
+<body>
+<script type="text/javascript">list()</script>
+
+<div class="container">
+    <div class="header">
+        <br><br><br>
+        <a href="/"><h3 class="text-muted">ORDER</h3></a>
+    </div>
+    <br>
+    <table class="table table-striped">
+        <thead>
+        <tr align = center>
+            <th>음료</th>
+            <th>Hot/Cold</th>
+            <th>Size</th>
+            <th>수량</th>
+            <th>주문</th>
+        </tr>
+        </thead>
+
+        <thead>
+        <tr align = center valign = middle>
+            <td>아메리카노</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradioT" id="btnradio1" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="btnradio1">HOT</label>
+
+                    <input type="radio" class="btn-check" name="btnradioT" id="btnradio2" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio2">COLD</label>
+                </div>
+            </td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradioS" id="btnradio3" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="btnradio3">Grande</label>
+
+                    <input type="radio" class="btn-check" name="btnradioS" id="btnradio4" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio4">Tall</label>
+
+                    <input type="radio" class="btn-check" name="btnradioS" id="btnradio5" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio5">Venti</label>
+                </div>
+            </td>
+
+            <td>
+                <select>
+                    <option>수량선택</option>
+                    <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                    <option>6</option><option>7</option><option>8</option><option>9</option></select>
+            </td>
+            <td class="btn-group"><button >ok</button></td>
+        </tr>
+        </thead>
+
+
+
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+        <tr align = center>
+            <th>푸드</th>
+            <th>수량</th>
+            <th>주문</th>
+        </tr>
+        </thead>
+
+        <thead>
+        <tr align = center>
+            <td>티라미수</td>
+
+            <td>
+                <select>
+                    <option>수량선택</option>
+                    <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                    <option>6</option><option>7</option><option>8</option><option>9</option></select>
+            </td>
+            <td class="btn-group"><button >ok</button></td>
+        </tr>
+        </thead>
+
+
+        <tbody id="foodTable">
+        </tbody>
+    </table>
+</div> <!-- /container -->
+
+<button>주문완료</button>
 </body>
 </html>
