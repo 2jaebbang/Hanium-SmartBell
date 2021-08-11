@@ -12,9 +12,9 @@ import java.io.Serializable;
 @Getter @Setter
 public class OrderItem implements Serializable {
 
-    @Id @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private Order order; //주문
+    @Id @GeneratedValue
+    @Column(name="order_id")
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
@@ -22,15 +22,19 @@ public class OrderItem implements Serializable {
 
     private int orderPrice; //주문 가격
     private int amount; //주문 수량
-
+    private String temperature;
+    private String size;
 
     //== 주문, 주문상품 엔티티 개발==//
     //==생성 메서드==//
-    public static OrderItem createOrderItem(Item item, int orderPrice, int amount) {
+    public static OrderItem createOrderItem(Item item, int orderPrice, String temperature, String size, int amount) {
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
         orderItem.setOrderPrice(orderPrice);
+        orderItem.setTemperature(temperature);
+        orderItem.setSize(size);
         orderItem.setAmount(amount);
+
         return orderItem;
     }
 

@@ -8,9 +8,8 @@ function order() {
     })
         .then( ( response) => response.json())
         .then((data) => {
-            for(let i=0; i<data.length; i++){
-                let name = data[i]['name'];
-
+            for(let i=1; i<=data.length; i++){
+                let name = data[i-1]['name'];
                 //beverage 테이블
                 let trBev =  document.createElement("tr");
                 document.getElementById("beverageTable").appendChild(trBev);
@@ -24,7 +23,6 @@ function order() {
                 let tdName = document.createElement("td");
                 tdName.innerText = `${name}`;
                 tdName.id=`name${i}`;
-
 
                 //beverage 온도
                   let tdBevTemp = document.createElement("td");
@@ -183,24 +181,28 @@ function order() {
 
 function orderItem(event) {
 
+    //아이디
     let id = event.target.id;
 
     //이름
     let name = document.getElementById(`name${id}`).innerText;
 
-    let tempArr= document.getElementsByName(`btnradioT${id}`).length;
+
+    let tempArr = document.getElementsByName(`btnradioT${id}`).length;
+    let temp = "";
     for(let i=0; i<tempArr; i++) {
         if (document.getElementsByName(`btnradioT${id}`)[i].checked == true) {
             //온도
-            let temp = document.getElementsByName(`btnradioT${id}`)[i].value;
+            temp = document.getElementsByName(`btnradioT${id}`)[i].value;
         }
     }
 
         let sizeArr = document.getElementsByName(`btnradioS${id}`).length;
+    let size = "";
         for(let i=0; i<sizeArr; i++){
             if(document.getElementsByName(`btnradioS${id}`)[i].checked==true){
                 //사이즈
-                let size = document.getElementsByName(`btnradioS${id}`)[i].value;
+                size = document.getElementsByName(`btnradioS${id}`)[i].value;
             }
     }
 
@@ -208,20 +210,23 @@ function orderItem(event) {
         //개수
         let amount = amountTarget.options[amountTarget.selectedIndex].value;
 
+        alert(id);
 
 
-    // fetch("/items/newBeverage", {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //         name: beverageName,
-    //         price: beveragePrice,
-    //         size: beverageSize,
-    //     }),
-    // })
-    //     .then((response) => response.json())
-    //     .then((form) => console.log(form));
+    fetch("/order", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            itemId: id,
+            name: name,
+            size: size,
+            temperature: temp,
+            amount: amount
+        }),
+    })
+        .then((response) => response.json())
+        .then((form) => console.log(form));
 
 }

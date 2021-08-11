@@ -24,13 +24,13 @@ public class OrderService {
      * 주문
      */
     @Transactional
-    public Long order(Long itemId, int amount) {
+    public Long order(Long itemId, String temperature, String size, int amount) {
 
         //엔티티 조회
         Item item = itemRepository.findOne(itemId);
 
         //주문상품 생성
-        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), amount);
+        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), temperature, size, amount);
 
         //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
         Order order = Order.createOrder(orderItem);

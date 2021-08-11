@@ -1,15 +1,13 @@
 package hanium.smartbell.controller;
 
 import hanium.smartbell.domain.Order;
+import hanium.smartbell.domain.OrderItem;
 import hanium.smartbell.repository.OrderSearch;
 import hanium.smartbell.service.ItemService;
 import hanium.smartbell.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,11 +32,10 @@ public class OrderController {
 
 
     @PostMapping(value = "/order")
-    public String createOrder() {
-        Order order = new Order();
-        Long itemId = order.getId();
-        Integer amount = order.getTotalPrice();
-        orderService.order(itemId, amount);
+    public String createOrder(@RequestBody OrderItemForm form) {
+        OrderItem orderItem = new OrderItem();
+
+        orderService.order(Long.valueOf(form.getItemId()), form.getTemperature(), form.getSize(), form.getAmount());
         return "orders/orderForm";
     }
 

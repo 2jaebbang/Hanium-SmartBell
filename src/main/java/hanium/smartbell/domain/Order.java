@@ -27,16 +27,16 @@ public class Order {
 
 
     //==연관관계 메서드==//
-    public void addOrderItem(OrderItem orderItem) {
-        orderItem.setOrder(this);
-    }
+//    public void addOrderItem(OrderItem orderItem) {
+//        orderItem.set(this);
+//    }
 
     //== 주문도메인개발(주문,주문상품 엔티티 개발) ==//
     //==생성 메서드==//
     public static Order createOrder(OrderItem... orderItems) { //... <-여러개  넘김
         Order order = new Order();
         for (OrderItem orderItem : orderItems) {
-            order.addOrderItem(orderItem);
+            //order.addOrderItem(orderItem);
             order.totalPrice += orderItem.getTotalPrice();
         }
 
