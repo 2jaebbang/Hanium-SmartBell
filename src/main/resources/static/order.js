@@ -23,6 +23,7 @@ function order() {
                 //이름
                 let tdName = document.createElement("td");
                 tdName.innerText = `${name}`;
+                tdName.id=`name${i}`;
 
 
                 //beverage 온도
@@ -32,6 +33,7 @@ function order() {
 
                  divT.classList.add("btn-group");
                  divT.classList.add("btn-group-toggle");
+                divT.id=`divT${i}`;
                  divT.setAttribute("data-toggle","buttons");
                 tdBevTemp.appendChild(divT);
 
@@ -44,8 +46,9 @@ function order() {
 
                  let inputT1 = document.createElement("input");
                   inputT1.type="radio";
-                  inputT1.name="btnradioT";
+                  inputT1.name=`btnradioT${i}`;
                   inputT1.id="btnradioT1";
+                  inputT1.value="hot";
                   inputT1.autocomplete="off";
 
                   labelT1.appendChild(inputT1);
@@ -59,8 +62,9 @@ function order() {
 
                 let inputT2 = document.createElement("input");
                 inputT2.type="radio";
-                inputT2.name="btnradioT";
+                inputT2.name=`btnradioT${i}`;
                 inputT2.id="btnradioT2";
+                inputT2.value="cold";
                 inputT2.autocomplete="off";
 
                 labelT2.appendChild(inputT2);
@@ -73,6 +77,7 @@ function order() {
 
                 divS.classList.add("btn-group");
                 divS.classList.add("btn-group-toggle");
+                divS.id=`divS${i}`;
                 divS.setAttribute("data-toggle","buttons");
                 tdBevSize.appendChild(divS);
 
@@ -85,8 +90,9 @@ function order() {
 
                 let inputS1 = document.createElement("input");
                 inputS1.type="radio";
-                inputS1.name="btnradioS";
+                inputS1.name=`btnradioS${i}`;
                 inputS1.id="btnradioS1";
+                inputS1.value="tall";
                 inputS1.autocomplete="off";
 
                 labelS1.appendChild(inputS1);
@@ -100,8 +106,9 @@ function order() {
 
                 let inputS2 = document.createElement("input");
                 inputS2.type="radio";
-                inputS2.name="btnradioS";
+                inputS2.name=`btnradioS${i}`;
                 inputS2.id="btnradioS2";
+                inputS2.value="grande";
                 inputS2.autocomplete="off";
 
                 labelS2.appendChild(inputS2);
@@ -115,8 +122,9 @@ function order() {
 
                 let inputS3 = document.createElement("input");
                 inputS3.type="radio";
-                inputS3.name="btnradioS";
+                inputS3.name=`btnradioS${i}`;
                 inputS3.id="btnradioS3";
+                inputS3.value="venti";
                 inputS3.autocomplete="off";
 
                 labelS3.appendChild(inputS3);
@@ -128,6 +136,7 @@ function order() {
                  let select = document.createElement("select");
                  select.classList="custom-select";
                  select.style="width: 100px";
+                 select.id=`select${i}`;
                  let amount = [];
                  amount.push("수량선택");
 
@@ -147,9 +156,10 @@ function order() {
                 let btn = document.createElement("button");
                 btn.classList.add("btn");
                 btn.classList.add("btn-success");
+                btn.id=`${i}`;
                 btn.innerText="주문";
+                btn.addEventListener('click',orderItem);
                 tdOk.appendChild(btn);
-
 
 
                 if(data[i]['category']==="beverage"){
@@ -169,4 +179,49 @@ function order() {
 
             }
         })
+}
+
+function orderItem(event) {
+
+    let id = event.target.id;
+
+    //이름
+    let name = document.getElementById(`name${id}`).innerText;
+
+    let tempArr= document.getElementsByName(`btnradioT${id}`).length;
+    for(let i=0; i<tempArr; i++) {
+        if (document.getElementsByName(`btnradioT${id}`)[i].checked == true) {
+            //온도
+            let temp = document.getElementsByName(`btnradioT${id}`)[i].value;
+        }
+    }
+
+        let sizeArr = document.getElementsByName(`btnradioS${id}`).length;
+        for(let i=0; i<sizeArr; i++){
+            if(document.getElementsByName(`btnradioS${id}`)[i].checked==true){
+                //사이즈
+                let size = document.getElementsByName(`btnradioS${id}`)[i].value;
+            }
+    }
+
+        let amountTarget = document.getElementById(`select${id}`);
+        //개수
+        let amount = amountTarget.options[amountTarget.selectedIndex].value;
+
+
+
+    // fetch("/items/newBeverage", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //         name: beverageName,
+    //         price: beveragePrice,
+    //         size: beverageSize,
+    //     }),
+    // })
+    //     .then((response) => response.json())
+    //     .then((form) => console.log(form));
+
 }
