@@ -8,12 +8,17 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "order_item")
+@SequenceGenerator(
+        name="BOARD_SEQ_GENERATOR",
+        sequenceName="BOARD_SEQ",
+        initialValue=1, allocationSize = 1
+)
 @Getter @Setter
 public class OrderItem implements Serializable {
 
-    @Id @GeneratedValue
+    @Id
     @Column(name="order_id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOARD_SEQ_GENERATOR")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -48,13 +48,13 @@ function order() {
                   inputT1.id="btnradioT1";
                   inputT1.value="hot";
                   inputT1.autocomplete="off";
+                  inputT1.checked="checked";
 
                   labelT1.appendChild(inputT1);
 
                 let labelT2 = document.createElement("label");
                 labelT2.classList.add("btn");
                 labelT2.classList.add("btn-primary");
-                labelT2.classList.add("active");
                 labelT2.innerText="COLD";
                 divT.appendChild(labelT2);
 
@@ -92,13 +92,13 @@ function order() {
                 inputS1.id="btnradioS1";
                 inputS1.value="tall";
                 inputS1.autocomplete="off";
+                inputS1.checked="checked";
 
                 labelS1.appendChild(inputS1);
 
                 let labelS2 = document.createElement("label");
                 labelS2.classList.add("btn");
                 labelS2.classList.add("btn-secondary");
-                labelS2.classList.add("active");
                 labelS2.innerText="Grande";
                 divS.appendChild(labelS2);
 
@@ -114,7 +114,6 @@ function order() {
                 let labelS3 = document.createElement("label");
                 labelS3.classList.add("btn");
                 labelS3.classList.add("btn-secondary");
-                labelS3.classList.add("active");
                 labelS3.innerText="Venti";
                 divS.appendChild(labelS3);
 
@@ -160,7 +159,7 @@ function order() {
                 tdOk.appendChild(btn);
 
 
-                if(data[i]['category']==="beverage"){
+                if(data[i-1]['category']==="beverage"){
                     trBev.appendChild(tdName);
                     trBev.appendChild(tdBevTemp);
                     trBev.appendChild(tdBevSize);

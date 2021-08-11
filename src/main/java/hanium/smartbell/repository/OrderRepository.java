@@ -1,6 +1,7 @@
 package hanium.smartbell.repository;
 
 import hanium.smartbell.domain.Order;
+import hanium.smartbell.domain.OrderItem;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderRepository {
     private final EntityManager em;
-    public void save(Order order) {
+    public void save(OrderItem order) {
         em.persist(order);
     }
     public Order findOne(Long id) {
