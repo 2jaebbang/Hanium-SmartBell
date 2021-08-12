@@ -1,7 +1,7 @@
 package hanium.smartbell.controller;
 
-import hanium.smartbell.domain.OrderItem;
 import hanium.smartbell.service.ItemService;
+import hanium.smartbell.service.OrderItemService;
 import hanium.smartbell.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +15,7 @@ public class OrderController {
 
     private final ItemService itemService;
     private final OrderService orderService;
+    private final OrderItemService orderItemService;
 
 //    @GetMapping(value = "/items/itemListJson")
 //    @ResponseBody
@@ -31,9 +32,8 @@ public class OrderController {
 
     @PostMapping(value = "/order")
     public String createOrder(@RequestBody OrderItemForm form) {
-        OrderItem orderItem = new OrderItem();
 
-        orderService.order(Long.valueOf(form.getItemId()), form.getTemperature(), form.getSize(), form.getAmount());
+        orderItemService.orderItem(Long.valueOf(form.getItemId()), form.getTemperature(), form.getSize(), form.getAmount());
         return "orders/orderForm";
     }
 

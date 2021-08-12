@@ -1,41 +1,41 @@
 package hanium.smartbell.service;
 
-import hanium.smartbell.domain.Order;
 import hanium.smartbell.domain.OrderItem;
+import hanium.smartbell.domain.item.Item;
+import hanium.smartbell.repository.ItemRepository;
 import hanium.smartbell.repository.OrderItemRepository;
-import hanium.smartbell.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class OrderService {
+public class OrderItemService {
 
-    private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
+    private final ItemRepository itemRepository;
 
 
     /**
      * 주문
      */
     @Transactional
-    public Long order(Long orderId, String temperature, String size, int amount) {
+    public Long orderItem(Long itemId, String temperature, String size, int amount) {
 
         //엔티티 조회
-        List<OrderItem> orderItemList = orderItemRepository.findAll();
+        Item item = itemRepository.findOne(itemId);
+
+        //주문상품 생성
+        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), temperature, size, amount);
 
         //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
-        Order order = Order.createOrder(orderItemList);
+        //order order = Order.createOrder(orderItem);
 
         //주문 저장
-        orderRepository.save(order);
-        return order.getOrderItem().getId();
+        orderItemRepository.save(orderItem);
+        return orderItem.getId();
     }
-
 
 //    /**
 //     * 제조 완료
@@ -64,7 +64,5 @@ public class OrderService {
 //    public List<Order> findOrders(OrderSearch orderSearch) {
 //        return orderRepository.findAllByCriteria(orderSearch);
 //    }
-
-
 
 }

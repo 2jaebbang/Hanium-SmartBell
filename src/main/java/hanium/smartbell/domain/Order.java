@@ -4,16 +4,22 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="orders")
 @Getter @Setter
-public class Order {
+public class Order implements Serializable {
 
-    @Id @GeneratedValue
-    @Column(name="order_id")
-    private Long id;
+//    @Id @GeneratedValue
+//    @Column(name="ordennnnr_id")
+//    private Long id;
+
+    @Id @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private OrderItem orderItem;
 
     private String guestId;
 
@@ -33,7 +39,7 @@ public class Order {
 
     //== 주문도메인개발(주문,주문상품 엔티티 개발) ==//
     //==생성 메서드==//
-    public static Order createOrder(OrderItem... orderItems) { //... <-여러개  넘김
+    public static Order createOrder(List<OrderItem> orderItems) { //... <-여러개  넘김
         Order order = new Order();
         for (OrderItem orderItem : orderItems) {
             //order.addOrderItem(orderItem);
