@@ -49,8 +49,20 @@ public class OrderItem implements Serializable {
 
 
     //==조회 로직==//
-    /** 주문상품 전체 가격 조회 */
-    public int getTotalPrice() {
-        return getOrderPrice() * getAmount();
+    /** 주문상품 가격 조회 */
+    public int getOrderItemTotalPrice() {
+        int totalPrice = 0;
+        if(getItem().getCategory().equals("beverage")){
+            if(getSize().equals("tall")){
+                totalPrice += getOrderPrice()*getAmount();
+            } else if(getSize().equals("grande")){
+                totalPrice += (getOrderPrice()+getItem().getPrice())*getAmount();
+            } else if(getSize().equals("venti")){
+                totalPrice += (getOrderPrice()+getItem().getPrice()*2)*getAmount();
+            }
+        } else {
+            totalPrice += getOrderPrice() * getAmount();
+        }
+        return totalPrice;
     }
 }

@@ -22,8 +22,10 @@ public class OrderService {
     /**
      * 주문
      */
+
+    //orderId를 통해 주문할 상품 걸러내야함
     @Transactional
-    public Long order(Long orderId, String temperature, String size, int amount) {
+    public Long order(Long orderId) {
 
         //엔티티 조회
         List<OrderItem> orderItemList = orderItemRepository.findAll();
@@ -33,7 +35,7 @@ public class OrderService {
 
         //주문 저장
         orderRepository.save(order);
-        return order.getOrderItem().getOrderId();
+        return order.getOrder;
     }
 
 

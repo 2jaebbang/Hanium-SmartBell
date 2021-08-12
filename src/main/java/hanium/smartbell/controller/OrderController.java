@@ -50,9 +50,11 @@ public class OrderController {
     @PostMapping(value = "/orders/orderList")
     public String createOrderList(@RequestBody OrderListForm form) {
 
-        //orderService.order()
+        orderService.order(form.getOrderId());
         return "orders/orderList";
     }
+
+
 
 
 

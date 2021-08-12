@@ -43,7 +43,7 @@ public class Order implements Serializable {
         Order order = new Order();
         for (OrderItem orderItem : orderItems) {
             //order.addOrderItem(orderItem);
-            order.totalPrice += orderItem.getTotalPrice();
+            order.totalPrice += orderItem.getOrderItemTotalPrice();
         }
 
         order.setStatus(OrderStatus.OREDERD);

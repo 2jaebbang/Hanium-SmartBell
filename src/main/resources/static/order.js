@@ -182,8 +182,6 @@ function order() {
 
 function orderItem(event) {
 
-
-
     //아이템아이디
     let itemId = event.target.id;
 
@@ -232,9 +230,9 @@ function orderItem(event) {
         .then((form) => console.log(form));
 }
 
-function completeOrder(){
-    orderId++;
-
-    console.log(orderId);
-    alert(orderId);
-}
+// function compOrder(){
+//     orderId++;
+//
+//     console.log(orderId);
+//
+// }
