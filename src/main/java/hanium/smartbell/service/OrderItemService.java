@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -21,20 +23,24 @@ public class OrderItemService {
      * 주문
      */
     @Transactional
-    public Long orderItem(Long itemId, String temperature, String size, int amount) {
+    public Long orderItem(Long orderId,Long itemId, String temperature, String size, int amount) {
 
         //엔티티 조회
         Item item = itemRepository.findOne(itemId);
 
         //주문상품 생성
-        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), temperature, size, amount);
+        OrderItem orderItem = OrderItem.createOrderItem(orderId ,item, item.getPrice(), temperature, size, amount);
 
         //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
         //order order = Order.createOrder(orderItem);
 
         //주문 저장
         orderItemRepository.save(orderItem);
-        return orderItem.getId();
+        return orderItem.getOrderId();
+    }
+
+    public List<OrderItem> findOrderItems() {
+        return orderItemRepository.findAll();
     }
 
 //    /**

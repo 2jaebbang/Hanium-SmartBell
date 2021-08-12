@@ -1,5 +1,6 @@
 package hanium.smartbell.controller;
 
+import hanium.smartbell.domain.OrderItem;
 import hanium.smartbell.service.ItemService;
 import hanium.smartbell.service.OrderItemService;
 import hanium.smartbell.service.OrderService;
@@ -8,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -17,13 +21,6 @@ public class OrderController {
     private final OrderService orderService;
     private final OrderItemService orderItemService;
 
-//    @GetMapping(value = "/items/itemListJson")
-//    @ResponseBody
-//    public List<Item> items() {
-//        List<Item> item = itemService.findItems();
-//        return item;
-//    }
-
     @GetMapping(value = "/order")
     public String createOrderForm() {
         return "orders/orderForm";
@@ -31,11 +28,32 @@ public class OrderController {
 
 
     @PostMapping(value = "/order")
-    public String createOrder(@RequestBody OrderItemForm form) {
+    public String createOrderItem(@RequestBody OrderItemForm form) {
 
-        orderItemService.orderItem(Long.valueOf(form.getItemId()), form.getTemperature(), form.getSize(), form.getAmount());
+        orderItemService.orderItem(Long.valueOf(form.getOrderId()),Long.valueOf(form.getItemId()), form.getTemperature(), form.getSize(), form.getAmount());
         return "orders/orderForm";
     }
+
+
+    @GetMapping(value = "/orders/orderItemListJson")
+    @ResponseBody
+    public List<OrderItem> orderItems() {
+        List<OrderItem> orderItem = orderItemService.findOrderItems();
+        return orderItem;
+    }
+
+    @GetMapping(value = "/orders/orderList")
+    public String createOrderListForm() {
+        return "orders/orderList";
+    }
+
+    @PostMapping(value = "/orders/orderList")
+    public String createOrderList(@RequestBody OrderListForm form) {
+
+        //orderService.order()
+        return "orders/orderList";
+    }
+
 
 
 //    /** 주문 결과 확인 */

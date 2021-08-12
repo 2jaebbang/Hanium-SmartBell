@@ -1,3 +1,5 @@
+let orderId = 1;
+
 function order() {
     fetch("/items/itemListJson", {
         headers: {
@@ -180,36 +182,36 @@ function order() {
 
 function orderItem(event) {
 
-    //아이디
-    let id = event.target.id;
+
+
+    //아이템아이디
+    let itemId = event.target.id;
 
     //이름
-    let name = document.getElementById(`name${id}`).innerText;
+    let name = document.getElementById(`name${itemId}`).innerText;
+    alert("test");
 
-
-    let tempArr = document.getElementsByName(`btnradioT${id}`).length;
+    let tempArr = document.getElementsByName(`btnradioT${itemId}`).length;
     let temp = "";
     for(let i=0; i<tempArr; i++) {
-        if (document.getElementsByName(`btnradioT${id}`)[i].checked == true) {
+        if (document.getElementsByName(`btnradioT${itemId}`)[i].checked == true) {
             //온도
-            temp = document.getElementsByName(`btnradioT${id}`)[i].value;
+            temp = document.getElementsByName(`btnradioT${itemId}`)[i].value;
         }
     }
 
-        let sizeArr = document.getElementsByName(`btnradioS${id}`).length;
+        let sizeArr = document.getElementsByName(`btnradioS${itemId}`).length;
     let size = "";
         for(let i=0; i<sizeArr; i++){
-            if(document.getElementsByName(`btnradioS${id}`)[i].checked==true){
+            if(document.getElementsByName(`btnradioS${itemId}`)[i].checked==true){
                 //사이즈
-                size = document.getElementsByName(`btnradioS${id}`)[i].value;
+                size = document.getElementsByName(`btnradioS${itemId}`)[i].value;
             }
     }
 
-        let amountTarget = document.getElementById(`select${id}`);
+        let amountTarget = document.getElementById(`select${itemId}`);
         //개수
         let amount = amountTarget.options[amountTarget.selectedIndex].value;
-
-        alert(id);
 
 
     fetch("/order", {
@@ -218,7 +220,8 @@ function orderItem(event) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            itemId: id,
+            orderId: orderId,
+            itemId: itemId,
             name: name,
             size: size,
             temperature: temp,
@@ -228,9 +231,4 @@ function orderItem(event) {
         .then((response) => response.json())
         .then((form) => console.log(form));
 
-}
-
-
-function test(){
-alert("Test");
 }
