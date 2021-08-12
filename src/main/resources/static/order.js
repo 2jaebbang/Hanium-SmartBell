@@ -230,5 +230,11 @@ function orderItem(event) {
     })
         .then((response) => response.json())
         .then((form) => console.log(form));
+}
 
+function completeOrder(){
+    orderId++;
+
+    console.log(orderId);
+    alert(orderId);
 }

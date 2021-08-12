@@ -10,7 +10,6 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "dtype")
 @Getter
 @Setter
-
 public abstract class Item {
     @Id
     @GeneratedValue
