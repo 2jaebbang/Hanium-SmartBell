@@ -54,6 +54,11 @@ public class OrderController {
         return "orders/orderList";
     }
 
+    @GetMapping(value = "/orderstatus")
+    public String createOrderStatusTable(){
+        return "orders/orderStatusTable";
+    }
+
 
 
 

@@ -29,12 +29,12 @@ public class OrderService {
     public Long order(Long orderId) {
 
         //엔티티 조회
-        List<OrderItem> orderItemList = orderItemService.findOrderItems();
+        //List<OrderItem> orderItemList = orderItemService.findOrderItems();
 
-        List<OrderItem> orderItemList1 = orderItemRepository.findOrder(orderId);
+        List<OrderItem> orderItemList = orderItemRepository.findOrder(orderId);
 
         //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
-        Order order = Order.createOrder(orderItemList1);
+        Order order = Order.createOrder(orderItemList);
 
         //주문 저장
         orderRepository.save(order);

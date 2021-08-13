@@ -193,12 +193,12 @@ function order() {
 
 function orderItem(event) {
 
+    alert("추가되었습니다.");
     //아이템아이디
     let itemId = event.target.id;
 
     //이름
     let name = document.getElementById(`name${itemId}`).innerText;
-    alert("test");
 
     let tempArr = document.getElementsByName(`btnradioT${itemId}`).length;
     let temp = "";

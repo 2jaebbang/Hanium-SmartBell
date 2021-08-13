@@ -12,8 +12,10 @@ import java.util.List;
 @Getter @Setter
 public class Order{
 
-    @Id @GeneratedValue
-    @Column(name="test_id")
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOARD_SEQ_GENERATOR")
+    @Column(name="order_id")
     private Long id;
 
 //     @ManyToOne(fetch = FetchType.LAZY)
