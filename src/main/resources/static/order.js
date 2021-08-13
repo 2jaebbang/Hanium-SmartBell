@@ -1,4 +1,4 @@
-let orderId = 1;
+let orderId = 3;
 
 function order() {
     fetch("/items/itemListJson", {

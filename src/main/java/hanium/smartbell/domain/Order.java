@@ -4,17 +4,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name="orders")
 @Getter @Setter
-public class Order implements Serializable {
+public class Order{
 
     @Id @GeneratedValue
-    @Column(name="order_id")
+    @Column(name="test_id")
     private Long id;
 
 //     @ManyToOne(fetch = FetchType.LAZY)
@@ -43,7 +42,7 @@ public class Order implements Serializable {
         int orderItemTotalPrice = 0;
         Order order = new Order();
         for (OrderItem orderItem : orderItems) {
-            orderItemTotalPrice += orderItem.getOrderItemTotalPrice();
+                orderItemTotalPrice += orderItem.getOrderItemTotalPrice();
         }
 
         order.setTotalPrice(orderItemTotalPrice);

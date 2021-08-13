@@ -2,6 +2,7 @@ package hanium.smartbell.service;
 
 import hanium.smartbell.domain.Order;
 import hanium.smartbell.domain.OrderItem;
+import hanium.smartbell.repository.OrderItemRepository;
 import hanium.smartbell.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final OrderItemService orderItemService;
 
+    private final OrderItemRepository orderItemRepository;
 
     /**
      * 주문
@@ -29,8 +31,10 @@ public class OrderService {
         //엔티티 조회
         List<OrderItem> orderItemList = orderItemService.findOrderItems();
 
+        List<OrderItem> orderItemList1 = orderItemRepository.findOrder(orderId);
+
         //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
-        Order order = Order.createOrder(orderItemList);
+        Order order = Order.createOrder(orderItemList1);
 
         //주문 저장
         orderRepository.save(order);

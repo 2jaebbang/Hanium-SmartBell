@@ -21,4 +21,9 @@ public class OrderItemRepository {
     public List<OrderItem> findAll() {
         return em.createQuery("select i from OrderItem i",OrderItem.class).getResultList();
     }
+
+    public  List<OrderItem> findOrder(Long orderId) {
+        String query = "select i from OrderItem i where i.orderId = "+orderId;
+        return em.createQuery(query,OrderItem.class).getResultList();
+    }
 }

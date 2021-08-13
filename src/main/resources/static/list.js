@@ -14,7 +14,7 @@ function list() {
             for(let i=0; i<data.length; i++){
                 let name = data[i]['name'];
                 let price = data[i]['price'];
-                let size = data[i]['size'];
+                let size = data[i]['sizeUp'];
                 let gram = data[i]['gram'];
 
 
