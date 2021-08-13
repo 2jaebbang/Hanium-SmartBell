@@ -69,19 +69,17 @@ function completeOrder(){
     })
         .then( ( response) => response.json())
         .then((data) => {
-            for (let i = 1; i <= data.length; i++) {
-                let orderID = data[i - 1]['orderId'];
-                console.log(orderID);
+            let orderId = data[0]['orderId'];
+
                 fetch("/orders/orderList", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        orderId: orderID
+                        orderId: orderId
                     }),
                 })
                     .then((response) => response.json())
-            }
         })
 }

@@ -31,8 +31,6 @@ public class OrderItemService {
         //주문상품 생성
         OrderItem orderItem = OrderItem.createOrderItem(orderId ,item, item.getPrice(), temperature, size, amount, sizeUp);
 
-        //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
-        //order order = Order.createOrder(orderItem);
 
         //주문 저장
         orderItemRepository.save(orderItem);
