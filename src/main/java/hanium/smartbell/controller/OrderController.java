@@ -30,7 +30,7 @@ public class OrderController {
     @PostMapping(value = "/order")
     public String createOrderItem(@RequestBody OrderItemForm form) {
 
-        orderItemService.orderItem(Long.valueOf(form.getOrderId()),Long.valueOf(form.getItemId()), form.getTemperature(), form.getSize(), form.getAmount());
+        orderItemService.orderItem(Long.valueOf(form.getOrderId()),Long.valueOf(form.getItemId()), form.getTemperature(), form.getSize(), form.getAmount(), form.getSizeUp());
         return "orders/orderForm";
     }
 

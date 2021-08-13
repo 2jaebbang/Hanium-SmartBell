@@ -45,7 +45,7 @@ public class ItemService {
         Beverage beverage = (Beverage) itemRepository.findOne(id);
         beverage.setName(name);
         beverage.setPrice(price);
-        beverage.setSize(size);
+        beverage.setSizeUp(size);
     }
 
     @Transactional    //푸드데이터 업데이트

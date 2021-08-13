@@ -30,7 +30,7 @@ public class ItemController {
         Beverage beverage = new Beverage();
         beverage.setName(form.getName());
         beverage.setPrice(form.getPrice());
-        beverage.setSize(form.getSize());
+        beverage.setSizeUp(form.getSizeUp());
         beverage.setTemparature(form.getTemparature());
         beverage.setCategory("beverage");
         itemService.saveItem(beverage);

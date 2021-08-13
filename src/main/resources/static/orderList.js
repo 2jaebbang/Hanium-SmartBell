@@ -71,6 +71,7 @@ function completeOrder(){
         .then((data) => {
             for (let i = 1; i <= data.length; i++) {
                 let orderID = data[i - 1]['orderId'];
+                console.log(orderID);
                 fetch("/orders/orderList", {
                     method: "POST",
                     headers: {
@@ -81,7 +82,6 @@ function completeOrder(){
                     }),
                 })
                     .then((response) => response.json())
-                    .then((form) => console.log(form));
             }
         })
 }

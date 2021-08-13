@@ -30,12 +30,13 @@ public class OrderItem implements Serializable {
 
     private int orderPrice; //주문 가격
     private int amount; //주문 수량
+    private int sizeUp;
     private String temperature;
     private String size;
 
     //== 주문, 주문상품 엔티티 개발==//
     //==생성 메서드==//
-    public static OrderItem createOrderItem(Long orderId, Item item, int orderPrice, String temperature, String size, int amount) {
+    public static OrderItem createOrderItem(Long orderId, Item item, int orderPrice, String temperature, String size, int amount, int sizeUp) {
         OrderItem orderItem = new OrderItem();
         orderItem.setOrderId(orderId);
         orderItem.setItem(item);
@@ -43,6 +44,7 @@ public class OrderItem implements Serializable {
         orderItem.setTemperature(temperature);
         orderItem.setSize(size);
         orderItem.setAmount(amount);
+        orderItem.setSizeUp(sizeUp);
 
         return orderItem;
     }
@@ -52,13 +54,15 @@ public class OrderItem implements Serializable {
     /** 주문상품 가격 조회 */
     public int getOrderItemTotalPrice() {
         int totalPrice = 0;
+
         if(getItem().getCategory().equals("beverage")){
+
             if(getSize().equals("tall")){
                 totalPrice += getOrderPrice()*getAmount();
             } else if(getSize().equals("grande")){
-                totalPrice += (getOrderPrice()+getItem().getPrice())*getAmount();
+                totalPrice += (getOrderPrice()+ getSizeUp())*getAmount();
             } else if(getSize().equals("venti")){
-                totalPrice += (getOrderPrice()+getItem().getPrice()*2)*getAmount();
+                totalPrice += (getOrderPrice()+ getSizeUp()*2)*getAmount();
             }
         } else {
             totalPrice += getOrderPrice() * getAmount();

@@ -12,6 +12,7 @@ function order() {
         .then((data) => {
             for(let i=1; i<=data.length; i++){
                 let name = data[i-1]['name'];
+                let sizeUp = data[i-1]['sizeUp'];
                 //beverage 테이블
                 let trBev =  document.createElement("tr");
                 document.getElementById("beverageTable").appendChild(trBev);
@@ -25,6 +26,12 @@ function order() {
                 let tdName = document.createElement("td");
                 tdName.innerText = `${name}`;
                 tdName.id=`name${i}`;
+
+                //사이즈업
+                let tdSizeUp = document.createElement("td");
+                tdSizeUp.innerText = `${sizeUp}`;
+                tdSizeUp.id=`sizeUp${i}`;
+                tdSizeUp.style.display = "none";
 
                 //beverage 온도
                   let tdBevTemp = document.createElement("td");
@@ -167,10 +174,14 @@ function order() {
                     trBev.appendChild(tdBevSize);
                     trBev.appendChild(tdAmount);
                     trBev.appendChild(tdOk);
+
+                    trBev.appendChild(tdSizeUp);
                 } else {
                     trFood.appendChild(tdName);
                     trFood.appendChild(tdAmount);
                     trFood.appendChild(tdOk);
+                    tdSizeUp.innerText = "0";
+                    trFood.appendChild(tdSizeUp);
                 }
 
                 document.getElementById("beverageTable").appendChild(trBev);
@@ -211,7 +222,7 @@ function orderItem(event) {
         //개수
         let amount = amountTarget.options[amountTarget.selectedIndex].value;
 
-
+        let sizeUp = document.getElementById(`sizeUp${itemId}`).innerText;
     fetch("/order", {
         method: "POST",
         headers: {
@@ -223,16 +234,9 @@ function orderItem(event) {
             name: name,
             size: size,
             temperature: temp,
-            amount: amount
+            amount: amount,
+            sizeUp: sizeUp
         }),
     })
         .then((response) => response.json())
-        .then((form) => console.log(form));
 }
-
-// function compOrder(){
-//     orderId++;
-//
-//     console.log(orderId);
-//
-// }

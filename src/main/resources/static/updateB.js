@@ -11,7 +11,7 @@ function BForm(itemId) {
 
             let name = data['name'];
             let price = data['price'];
-            let size = data['size'];
+            let size = data['sizeUp'];
 
             document.getElementById("updateBName").value = name;
             document.getElementById("updateBPrice").value = price;

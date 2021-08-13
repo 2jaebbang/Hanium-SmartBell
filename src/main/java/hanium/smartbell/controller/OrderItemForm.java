@@ -12,4 +12,5 @@ public class OrderItemForm {
     private int amount;
     private String temperature;
     private String size;
+    private int sizeUp;
 }

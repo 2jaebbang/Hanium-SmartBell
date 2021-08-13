@@ -13,7 +13,7 @@ function createB() {
         body: JSON.stringify({
             name: beverageName,
             price: beveragePrice,
-            size: beverageSize,
+            sizeUp: beverageSize,
         }),
     })
         .then((response) => response.json())

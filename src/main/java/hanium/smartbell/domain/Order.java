@@ -13,13 +13,13 @@ import java.util.List;
 @Getter @Setter
 public class Order implements Serializable {
 
-//    @Id @GeneratedValue
-//    @Column(name="ordennnnr_id")
-//    private Long id;
+    @Id @GeneratedValue
+    @Column(name="order_id")
+    private Long id;
 
-    @Id @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private OrderItem orderItem;
+//     @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "order_id")
+//    private OrderItem orderItem;
 
     private String guestId;
 
@@ -40,12 +40,13 @@ public class Order implements Serializable {
     //== 주문도메인개발(주문,주문상품 엔티티 개발) ==//
     //==생성 메서드==//
     public static Order createOrder(List<OrderItem> orderItems) { //... <-여러개  넘김
+        int orderItemTotalPrice = 0;
         Order order = new Order();
         for (OrderItem orderItem : orderItems) {
-            //order.addOrderItem(orderItem);
-            order.totalPrice += orderItem.getOrderItemTotalPrice();
+            orderItemTotalPrice += orderItem.getOrderItemTotalPrice();
         }
 
+        order.setTotalPrice(orderItemTotalPrice);
         order.setStatus(OrderStatus.OREDERD);
         order.setOrderDate(LocalDateTime.now());
         return order;
