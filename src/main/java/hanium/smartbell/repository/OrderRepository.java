@@ -25,6 +25,10 @@ public class OrderRepository {
         return em.find(Order.class, id);
     }
 
+    public List<Order> findAll() {
+        return em.createQuery("select i from Order i",Order.class).getResultList();
+    }
+
     //전체조회
 // public List<Order> findAll(OrderSearch orderSearch) {
 //

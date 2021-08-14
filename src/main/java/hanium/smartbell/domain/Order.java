@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class Order{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOARD_SEQ_GENERATOR")
     @Column(name="order_id")
-    private Long id;
+    private Long orderId;
 
 //     @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "order_id")
@@ -26,7 +27,7 @@ public class Order{
 
     private String url;
 
-    private LocalDateTime orderDate; //주문시간
+    private String orderDate; //주문시간
 
     private OrderStatus status; //주문상태 [ORDERED, COMPLETED, RECIEVED]
 
@@ -48,8 +49,8 @@ public class Order{
         }
 
         order.setTotalPrice(orderItemTotalPrice);
-        order.setStatus(OrderStatus.OREDERD);
-        order.setOrderDate(LocalDateTime.now());
+        order.setStatus(OrderStatus.ORDERED);
+        order.setOrderDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         return order;
     }
 
@@ -64,10 +65,4 @@ public class Order{
         this.setStatus(OrderStatus.RECIEVED);
     }
 
-
-    //==조회 로직==//
-    /** 전체 주문 가격 조회 */
-    public int getTotalPrice() {
-        return getTotalPrice();
-    }
 }

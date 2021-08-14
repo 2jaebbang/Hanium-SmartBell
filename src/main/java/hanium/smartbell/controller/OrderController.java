@@ -1,5 +1,6 @@
 package hanium.smartbell.controller;
 
+import hanium.smartbell.domain.Order;
 import hanium.smartbell.domain.OrderItem;
 import hanium.smartbell.service.ItemService;
 import hanium.smartbell.service.OrderItemService;
@@ -54,7 +55,16 @@ public class OrderController {
         return "orders/orderList";
     }
 
-    @GetMapping(value = "/orderstatus")
+
+    @GetMapping(value = "/orders/orderStatusListJson")
+    @ResponseBody
+    public List<Order> orderStatusList() {
+        List<Order> orderStatusList = orderService.findOrders();
+        return orderStatusList;
+    }
+
+
+    @GetMapping(value = "/orderStatusTable")
     public String createOrderStatusTable(){
         return "orders/orderStatusTable";
     }
@@ -63,19 +73,7 @@ public class OrderController {
 
 
 
-//    /** 주문 결과 확인 */
-//    @GetMapping(value = "/orderList")
-//    public String orderList() {
-//        return "orders/orderList";
-//    }
-//
-//
-//    @GetMapping(value = "/orders/orderListJson")
-//    @ResponseBody
-//    public List<Order> orders(OrderSearch orderSearch) {
-//        List<Order> order = orderService.findOrders(orderSearch);
-//        return order;
-//    }
+
 //
 //
 //    /** 제조 완료 */
