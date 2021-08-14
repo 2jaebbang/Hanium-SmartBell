@@ -44,27 +44,27 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-//    /**
-//     * 제조 완료
-//     */
-//    @Transactional
-//    public void completeOrder(Long orderId) {
-//        //주문 엔티티 조회
-//        Order order = orderRepository.findOne(orderId);
-//        //제조 완료
-//        order.complete();
-//    }
-//
-//    /**
-//     * 수령 완료
-//     */
-//    @Transactional
-//    public void receiveOrder(Long orderId) {
-//        //주문 엔티티 조회
-//        Order order = orderRepository.findOne(orderId);
-//        //제조 완료
-//        order.recieve();
-//    }
+    /**
+     * 제조 완료
+     */
+    @Transactional
+    public void completeOrder(Long orderId) {
+        //주문 엔티티 조회
+        Order order = orderRepository.findOne(orderId);
+        //제조 완료
+        order.complete();
+    }
+
+    /**
+     * 수령 완료
+     */
+    @Transactional
+    public void receiveOrder(Long orderId) {
+        //주문 엔티티 조회
+        Order order = orderRepository.findOne(orderId);
+        //제조 완료
+        order.recieve();
+    }
 
 
     /** 주문 검색 */

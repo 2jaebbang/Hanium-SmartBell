@@ -69,6 +69,20 @@ public class OrderController {
         return "orders/orderStatusTable";
     }
 
+    //제조완료
+    @PostMapping(value = "/orderStatusCompleted")
+    public String OrderStatusCompleted(@RequestBody OrderListForm form){
+        orderService.completeOrder(Long.valueOf(form.getOrderId()));
+        return "orders/orderStatusTable";
+    }
+
+    //수령완료
+    @PostMapping(value = "/orderStatusReceived")
+    public String OrderStatusReceived(@RequestBody OrderListForm form){
+        orderService.receiveOrder(Long.valueOf(form.getOrderId()));
+        return "orders/orderStatusTable";
+    }
+
 
 
 
