@@ -42,4 +42,6 @@ function updateF() {
     })
         .then((response) => response.json())
         .then((form) => console.log(form));
+
+    alert("수정되었습니다.")
 }

@@ -19,4 +19,5 @@ function createB() {
         .then((response) => response.json())
         .then((form) => console.log(form));
 
+    alert("상품이 등록되었습니다.")
 }

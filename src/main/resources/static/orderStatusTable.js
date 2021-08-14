@@ -43,47 +43,54 @@ function orderStatus() {
 
                  //주문상태 변경 버튼
                  let tdStatusButton = document.createElement("td");
-                 let divButton = document.createElement("div");
+                 //let divButton = document.createElement("div");
 
-                divButton.classList.add("btn-group");
-                divButton.classList.add("btn-group-toggle");
-                divButton.id=`divButton${i}`;
-                divButton.setAttribute("data-toggle","buttons");
-                tdStatusButton.appendChild(divButton);
+                // divButton.classList.add("btn-group");
+                // divButton.classList.add("btn-group-toggle");
+                // divButton.id=`divButton${i}`;
+                // divButton.setAttribute("data-toggle","buttons");
+                //tdStatusButton.appendChild(divButton);
 
-                let labelC = document.createElement("label");
-                labelC.classList.add("btn");
-                labelC.classList.add("btn-secondary");
-                labelC.classList.add("active");
-                labelC.innerText="제조완료";
-                divButton.appendChild(labelC);
+                // let labelC = document.createElement("label");
+                // labelC.classList.add("btn");
+                // labelC.classList.add("btn-warning");
+                // labelC.classList.add("active");
+                // labelC.innerText="제조완료";
+                // divButton.appendChild(labelC);
 
                 let inputC = document.createElement("input");
+                inputC.classList.add("btn");
+                inputC.classList.add("btn-outline-warning");
                 inputC.type="button";
                 inputC.name=`btn${i}`;
                 inputC.id="btnC";
+                inputC.value="제조완료";
                 inputC.addEventListener("click", function (){
                     statusCompleted(orderId);
                     link();
                 });
-                labelC.appendChild(inputC);
+                tdStatusButton.appendChild(inputC);
 
 
-                let labelR = document.createElement("label");
-                labelR.classList.add("btn");
-                labelR.classList.add("btn-secondary");
-                labelR.innerText="수령완료";
-                divButton.appendChild(labelR);
+                // let labelR = document.createElement("label");
+                // labelR.classList.add("btn");
+                // labelR.classList.add("btn-success");
+                // labelR.innerText="수령완료";
+                // divButton.appendChild(labelR);
 
                 let inputR = document.createElement("input");
+                inputR.classList.add("btn");
+                inputR.classList.add("btn-outline-success");
                 inputR.type="button";
                 inputR.name=`btn${i}`;
                 inputR.id="btnR";
+                inputR.value="수령완료";
                 inputR.addEventListener("click", function (){
                     statusReceived(orderId);
                     link();
                 });
-                labelR.appendChild(inputR);
+
+                tdStatusButton.appendChild(inputR);
 
 
                 trOrderStatus.appendChild(tdOrderId);

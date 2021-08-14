@@ -59,7 +59,7 @@ function orderList() {
 }
 
 //order에 데이터 저장하기 위함
-function completeOrder(){
+function enrollOrder(){
     fetch("/orders/orderItemListJson", {
         headers: {
             'Content-Type': 'application/json',
@@ -82,4 +82,10 @@ function completeOrder(){
                 })
                     .then((response) => response.json())
         })
+    alert("주문이 완료되었습니다.")
+}
+
+function link() {
+    location.href = "/order";
+    alert("주문이 취소되었습니다.");
 }

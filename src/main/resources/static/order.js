@@ -193,7 +193,7 @@ function order() {
 
 function orderItem(event) {
 
-    alert("추가되었습니다.");
+    alert("주문목록에 추가되었습니다.");
     //아이템아이디
     let itemId = event.target.id;
 
