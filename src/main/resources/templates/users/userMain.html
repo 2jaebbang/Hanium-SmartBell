@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="../../userMain.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let url = window.location.pathname;
+    let id = url.split('/');
+    userMain(id[2]);
+</script>
+
+<div class="container">
+
+    <h1>주문번호:</h1>
+<h3 id="test"></h3>
+    <p>
+    <h1>앞에 대기중인 인원:</h1>
+    <h3 id="test2"></h3>
+
+</div> <!-- /container -->
+
+</body>
+</html>

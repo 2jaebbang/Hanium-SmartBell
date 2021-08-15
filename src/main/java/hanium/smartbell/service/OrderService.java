@@ -44,6 +44,8 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
+    public Order findOrder(Long orderId) {return orderRepository.findOne(orderId);}
+
     /**
      * 제조 완료
      */

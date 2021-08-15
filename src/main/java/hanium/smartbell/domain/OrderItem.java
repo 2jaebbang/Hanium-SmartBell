@@ -34,6 +34,8 @@ public class OrderItem implements Serializable {
     private String temperature;
     private String size;
 
+    private int rate;
+
     //== 주문, 주문상품 엔티티 개발==//
     //==생성 메서드==//
     public static OrderItem createOrderItem(Long orderId, Item item, int orderPrice, String temperature, String size, int amount, int sizeUp) {
