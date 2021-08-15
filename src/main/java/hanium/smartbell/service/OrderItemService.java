@@ -29,7 +29,7 @@ public class OrderItemService {
         Item item = itemRepository.findOne(itemId);
 
         //주문상품 생성
-        OrderItem orderItem = OrderItem.createOrderItem(orderId ,item, item.getPrice(), temperature, size, amount, sizeUp);
+        OrderItem orderItem = OrderItem.createOrderItem(orderId ,item, item.getName() ,item.getPrice(), temperature, size, amount, sizeUp);
 
 
         //주문 저장

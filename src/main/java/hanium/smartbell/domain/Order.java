@@ -23,6 +23,10 @@ public class Order{
 //    @JoinColumn(name = "order_id")
 //    private OrderItem orderItem;
 
+
+    //orderItem에서의 order_id
+    private Long orItemId;
+
     private String guestId;
 
     private String url;
@@ -47,6 +51,9 @@ public class Order{
         for (OrderItem orderItem : orderItems) {
                 orderItemTotalPrice += orderItem.getOrderItemTotalPrice();
         }
+
+        //orderItem의 orderId 저장
+        order.setOrItemId(orderItems.get(0).getOrderId());
 
         order.setTotalPrice(orderItemTotalPrice);
         order.setStatus(OrderStatus.ORDERED);

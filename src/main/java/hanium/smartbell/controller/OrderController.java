@@ -2,7 +2,6 @@ package hanium.smartbell.controller;
 
 import hanium.smartbell.domain.Order;
 import hanium.smartbell.domain.OrderItem;
-import hanium.smartbell.service.ItemService;
 import hanium.smartbell.service.OrderItemService;
 import hanium.smartbell.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderController {
 
-    private final ItemService itemService;
     private final OrderService orderService;
     private final OrderItemService orderItemService;
 

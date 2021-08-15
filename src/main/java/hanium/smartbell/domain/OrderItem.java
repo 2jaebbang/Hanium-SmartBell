@@ -21,7 +21,6 @@ public class OrderItem implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOARD_SEQ_GENERATOR")
     private Long orderItemId;
 
-
     private Long orderId;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -33,15 +32,17 @@ public class OrderItem implements Serializable {
     private int sizeUp;
     private String temperature;
     private String size;
+    private String name;
 
     private int rate;
 
     //== 주문, 주문상품 엔티티 개발==//
     //==생성 메서드==//
-    public static OrderItem createOrderItem(Long orderId, Item item, int orderPrice, String temperature, String size, int amount, int sizeUp) {
+    public static OrderItem createOrderItem(Long orderId, Item item, String name, int orderPrice, String temperature, String size, int amount, int sizeUp) {
         OrderItem orderItem = new OrderItem();
         orderItem.setOrderId(orderId);
         orderItem.setItem(item);
+        orderItem.setName(name);
         orderItem.setOrderPrice(orderPrice);
         orderItem.setTemperature(temperature);
         orderItem.setSize(size);
