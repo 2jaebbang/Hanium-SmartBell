@@ -24,7 +24,7 @@ public class OrderItemRepository {
 
     //해당 orderId의 OrderItem을 검색
     public  List<OrderItem> findOrder(Long orderId) {
-        String query = "select i from OrderItem i where i.orderId = "+orderId;
+        String query = "select i from OrderItem i where i.order = "+orderId;
         return em.createQuery(query,OrderItem.class).getResultList();
     }
 }

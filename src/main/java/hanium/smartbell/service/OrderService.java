@@ -2,12 +2,15 @@ package hanium.smartbell.service;
 
 import hanium.smartbell.domain.Order;
 import hanium.smartbell.domain.OrderItem;
+import hanium.smartbell.domain.OrderStatus;
 import hanium.smartbell.repository.OrderItemRepository;
 import hanium.smartbell.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -23,6 +26,34 @@ public class OrderService {
     /**
      * 주문
      */
+    //== 주문도메인개발(주문,주문상품 엔티티 개발) ==//
+    //==생성 메서드==//
+    public Order createOrder(Long orderId,List<OrderItem> orderItems) { //... <-여러개  넘김
+        int orderItemTotalPrice = 0;
+        for (OrderItem orderItem : orderItems) {
+            orderItemTotalPrice += orderItem.getOrderItemTotalPrice();
+        }
+
+        //orderItem의 orderId 저장
+        //order.setOrItemId(orderItems.get(0).getOrderId());
+
+        Order order = orderRepository.findOne(orderId);
+        order.setTotalPrice(orderItemTotalPrice);
+        order.setStatus(OrderStatus.ORDERED);
+        order.setOrderDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        return order;
+    }
+
+    @Transactional
+    public Long orderTest() {
+
+        //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
+        Order order = Order.createOrderTest();
+
+        //주문 저장
+        orderRepository.save(order);
+        return order.getOrderId();
+    }
 
     //orderId를 통해 주문할 상품 걸러내야함
     @Transactional
@@ -32,8 +63,8 @@ public class OrderService {
 
         List<OrderItem> orderItemList = orderItemRepository.findOrder(orderId);
 
-        //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
-        Order order = Order.createOrder(orderItemList);
+        //주문 나머지 데이터생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
+        Order order = createOrder(orderId,orderItemList);
 
         //주문 저장
         orderRepository.save(order);
@@ -45,6 +76,7 @@ public class OrderService {
     }
 
     public Order findOrder(Long orderId) {return orderRepository.findOne(orderId);}
+
 
     /**
      * 제조 완료

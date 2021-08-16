@@ -21,7 +21,9 @@ public class OrderItem implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOARD_SEQ_GENERATOR")
     private Long orderItemId;
 
-    private Long orderId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "item_id")
@@ -38,9 +40,9 @@ public class OrderItem implements Serializable {
 
     //== 주문, 주문상품 엔티티 개발==//
     //==생성 메서드==//
-    public static OrderItem createOrderItem(Long orderId, Item item, String name, int orderPrice, String temperature, String size, int amount, int sizeUp) {
+    public static OrderItem createOrderItem(Order order, Item item, String name, int orderPrice, String temperature, String size, int amount, int sizeUp) {
         OrderItem orderItem = new OrderItem();
-        orderItem.setOrderId(orderId);
+        orderItem.setOrder(order);
         orderItem.setItem(item);
         orderItem.setName(name);
         orderItem.setOrderPrice(orderPrice);

@@ -1,5 +1,5 @@
-function orderList() {
-    fetch("/orders/orderItemListJson", {
+function orderList(orderId) {
+    fetch(`/orders/${orderId}`, {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -58,6 +58,8 @@ function orderList() {
         })
 }
 
+
+
 //order에 데이터 저장하기 위함
 function enrollOrder(){
     fetch("/orders/orderItemListJson", {
@@ -69,18 +71,24 @@ function enrollOrder(){
     })
         .then( ( response) => response.json())
         .then((data) => {
-            let orderId = data[0]['orderId'];
+            console.log(data);
+            let url = window.location.pathname;       //현재 url주소
+            let orderId = url.split('/');
+           alert(orderId[2]);
 
-                fetch("/orders/orderList", {
+            for(let i=1; i<=data.length; i++){
+                let order = data[i-1]['order'];
+                fetch(`http://localhost:8080/orders/${orderId[2]}/orderList`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        orderId: orderId
+                        orderId: order['orderId']
                     }),
                 })
                     .then((response) => response.json())
+            }
         })
     alert("주문이 완료되었습니다.")
 }

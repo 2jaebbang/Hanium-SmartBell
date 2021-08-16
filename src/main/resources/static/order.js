@@ -1,6 +1,20 @@
-let orderId = 3;
 
 function order() {
+    fetch("/orders/orderStatusListJson", {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+        .then( ( response) => response.json())
+        .then((data) => {
+            console.log(`test: ${data.length}`);
+            document.getElementById("abc").innerText = data[data.length-1]['orderId'];
+        })
+
+
+
+    //아이템리스트 불러옴
     fetch("/items/itemListJson", {
         headers: {
             'Content-Type': 'application/json',
@@ -191,11 +205,15 @@ function order() {
         })
 }
 
+//아이템 주문
 function orderItem(event) {
 
     alert("주문목록에 추가되었습니다.");
     //아이템아이디
     let itemId = event.target.id;
+
+    //orderId
+    let orderId = document.getElementById("abc").innerText;
 
     //이름
     let name = document.getElementById(`name${itemId}`).innerText;
@@ -239,4 +257,25 @@ function orderItem(event) {
         }),
     })
         .then((response) => response.json())
+}
+
+//주문생성(주문아이디만)
+function createOrderId(){
+
+    fetch("/orderTest", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+        }),
+    })
+        .then((response) => response.json())
+}
+
+//주문확인버튼 (orderId orderList로 넘김)
+function orderCheckButton(){
+    let orderId = document.getElementById("abc").innerText;
+    window.location.href = `/orders/${orderId}/orderList`;
+    alert(orderId);
 }

@@ -1,9 +1,11 @@
 package hanium.smartbell.service;
 
+import hanium.smartbell.domain.Order;
 import hanium.smartbell.domain.OrderItem;
 import hanium.smartbell.domain.item.Item;
 import hanium.smartbell.repository.ItemRepository;
 import hanium.smartbell.repository.OrderItemRepository;
+import hanium.smartbell.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderItemService {
 
+    private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
     private final ItemRepository itemRepository;
 
@@ -26,21 +29,23 @@ public class OrderItemService {
     public Long orderItem(Long orderId,Long itemId, String temperature, String size, int amount, int sizeUp) {
 
         //엔티티 조회
+        Order order = orderRepository.findOne(orderId);
         Item item = itemRepository.findOne(itemId);
 
         //주문상품 생성
-        OrderItem orderItem = OrderItem.createOrderItem(orderId ,item, item.getName() ,item.getPrice(), temperature, size, amount, sizeUp);
+        OrderItem orderItem = OrderItem.createOrderItem(order ,item, item.getName() ,item.getPrice(), temperature, size, amount, sizeUp);
 
 
         //주문 저장
         orderItemRepository.save(orderItem);
-        return orderItem.getOrderId();
+        return orderItem.getOrder().getOrderId();
     }
 
     public List<OrderItem> findOrderItems() {
         return orderItemRepository.findAll();
     }
 
+    public List<OrderItem> findOrderItem(Long orderId) {return orderItemRepository.findOrder(orderId);}
 
 //    /**
 //     * 제조 완료

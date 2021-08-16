@@ -6,10 +6,7 @@ import hanium.smartbell.service.OrderItemService;
 import hanium.smartbell.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,31 +22,35 @@ public class OrderController {
         return "orders/orderForm";
     }
 
-
     @PostMapping(value = "/order")
     public String createOrderItem(@RequestBody OrderItemForm form) {
+        orderItemService.orderItem(Long.valueOf(form.getOrderId()) ,Long.valueOf(form.getItemId()), form.getTemperature(), form.getSize(), form.getAmount(), form.getSizeUp());
+        return "orders/orderForm";
+    }
 
-        orderItemService.orderItem(Long.valueOf(form.getOrderId()),Long.valueOf(form.getItemId()), form.getTemperature(), form.getSize(), form.getAmount(), form.getSizeUp());
+    @PostMapping(value = "/orderTest")
+    public String createOrderTest(){
+        orderService.orderTest();
         return "orders/orderForm";
     }
 
 
-    @GetMapping(value = "/orders/orderItemListJson")
+    @GetMapping(value = "/orders/{orderId}")
     @ResponseBody
-    public List<OrderItem> orderItems() {
-        List<OrderItem> orderItem = orderItemService.findOrderItems();
+    public List<OrderItem> orderItems(@PathVariable("orderId") Long orderId) {
+        List<OrderItem> orderItem = orderItemService.findOrderItem(orderId);
         return orderItem;
     }
 
-    @GetMapping(value = "/orders/orderList")
+
+    @GetMapping(value = "/orders/{orderId}/orderList")
     public String createOrderListForm() {
         return "orders/orderList";
     }
 
-    @PostMapping(value = "/orders/orderList")
-    public String createOrderList(@RequestBody OrderListForm form) {
-
-        orderService.order(form.getOrderId());
+    @PostMapping(value = "/orders/{orderId}/orderList")
+    public String createOrderList(@PathVariable("orderId") Long orderId) {
+        orderService.order(orderId);
         return "orders/orderList";
     }
 
