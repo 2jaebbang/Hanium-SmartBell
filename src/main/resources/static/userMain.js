@@ -8,14 +8,8 @@ function userMain(orderId) {
     })
         .then( ( response) => response.json())
         .then((data) => {
-            //주문번호
-            let orderId = data['orderId'];
-
-            document.getElementById("test").innerText = orderId;
-
-
-            //orderItem의 orderId
-            let orItemId = data['orItemId'];
+            let orderNumber = data['orderId'];
+            document.getElementById("orderNumber").innerText = orderNumber;
 
             //주문상품 목록 출력
             fetch("/orders/orderItemListJson", {
@@ -30,7 +24,8 @@ function userMain(orderId) {
                     let temp;
                     let amount;
                     for(let i=1; i<=orderItemData.length; i++) {
-                        if(orderItemData[i-1]['orderId'] === orItemId){
+                        let orderData = orderItemData[i-1]['order'];
+                        if(orderData['orderId'] == orderNumber){
 
                             //상품명 데이터
                             name = orderItemData[i-1]['name'];
@@ -43,8 +38,6 @@ function userMain(orderId) {
 
                             //주문목록 테이블
                             let trOrderList =  document.createElement("tr");
-
-
 
                             //상품명
                             let tdName = document.createElement("td");
@@ -87,7 +80,7 @@ function userMain(orderId) {
                         countWaitTeam++;
                     }
                 }
-                document.getElementById("test2").innerText = countWaitTeam;
+                document.getElementById("wait").innerText = countWaitTeam;
             })
 
 }

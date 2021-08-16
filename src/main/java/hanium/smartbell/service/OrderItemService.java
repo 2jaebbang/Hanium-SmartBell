@@ -45,7 +45,6 @@ public class OrderItemService {
         return orderItemRepository.findAll();
     }
 
-    public List<OrderItem> findOrderItem(Long orderId) {return orderItemRepository.findOrder(orderId);}
 
 //    /**
 //     * 제조 완료

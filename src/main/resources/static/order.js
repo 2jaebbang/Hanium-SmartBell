@@ -8,8 +8,7 @@ function order() {
     })
         .then( ( response) => response.json())
         .then((data) => {
-            console.log(`test: ${data.length}`);
-            document.getElementById("abc").innerText = data[data.length-1]['orderId'];
+            document.getElementById("orderNumber").innerText = data[data.length-1]['orderId'];
         })
 
 
@@ -213,7 +212,7 @@ function orderItem(event) {
     let itemId = event.target.id;
 
     //orderId
-    let orderId = document.getElementById("abc").innerText;
+    let orderId = document.getElementById("orderNumber").innerText;
 
     //이름
     let name = document.getElementById(`name${itemId}`).innerText;
@@ -261,8 +260,7 @@ function orderItem(event) {
 
 //주문생성(주문아이디만)
 function createOrderId(){
-
-    fetch("/orderTest", {
+    fetch("/orderFirst", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -275,7 +273,6 @@ function createOrderId(){
 
 //주문확인버튼 (orderId orderList로 넘김)
 function orderCheckButton(){
-    let orderId = document.getElementById("abc").innerText;
+    let orderId = document.getElementById("orderNumber").innerText;
     window.location.href = `/orders/${orderId}/orderList`;
-    alert(orderId);
 }

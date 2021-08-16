@@ -44,11 +44,12 @@ public class OrderService {
         return order;
     }
 
+    //먼저 Order만 미리 생성
     @Transactional
-    public Long orderTest() {
+    public Long createOrderIdFirst() {
 
         //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
-        Order order = Order.createOrderTest();
+        Order order = Order.createOrderId();
 
         //주문 저장
         orderRepository.save(order);

@@ -28,17 +28,17 @@ public class OrderController {
         return "orders/orderForm";
     }
 
-    @PostMapping(value = "/orderTest")
+    @PostMapping(value = "/orderFirst")
     public String createOrderTest(){
-        orderService.orderTest();
+        orderService.createOrderIdFirst();
         return "orders/orderForm";
     }
 
-
-    @GetMapping(value = "/orders/{orderId}")
+//orderItem가져옴
+    @GetMapping(value = "/orders/orderItemListJson")
     @ResponseBody
-    public List<OrderItem> orderItems(@PathVariable("orderId") Long orderId) {
-        List<OrderItem> orderItem = orderItemService.findOrderItem(orderId);
+    public List<OrderItem> orderItems() {
+        List<OrderItem> orderItem = orderItemService.findOrderItems();
         return orderItem;
     }
 
@@ -81,26 +81,5 @@ public class OrderController {
         orderService.receiveOrder(Long.valueOf(form.getOrderId()));
         return "orders/orderStatusTable";
     }
-
-
-
-
-
-
-//
-//
-//    /** 제조 완료 */
-//    @PostMapping(value = "/orders/{orderId}/completed")
-//    public String completeOrder(@PathVariable("orderId") Long orderId) {    //pathvariable : url주소와 맵핑.
-//        orderService.completeOrder(orderId);
-//        return "/orders/orderList";
-//    }
-//
-//    /** 수령 완료 */
-//    @PostMapping(value = "/orders/{orderId}/received")
-//    public String receiveOrder(@PathVariable("orderId") Long orderId) {
-//        orderService.receiveOrder(orderId);
-//        return "/orders/orderList";
-//    }
 
 }

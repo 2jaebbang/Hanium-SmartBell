@@ -18,10 +18,6 @@ public class Order{
 //    @JoinColumn(name = "order_id")
 //    private OrderItem orderItem;
 
-
-    //orderItem에서의 order_id
-    private Long orItemId;
-
     private String guestId;
 
     private String url;
@@ -34,7 +30,7 @@ public class Order{
 
     //== 주문도메인개발(주문,주문상품 엔티티 개발) ==//
     //==생성 메서드==//
-    public static Order createOrderTest(){
+    public static Order createOrderId(){
         Order order = new Order();
         return order;
     }

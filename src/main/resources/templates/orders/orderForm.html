@@ -28,6 +28,17 @@
             text-align: center;
             vertical-align: middle;
         }
+
+        #orderNumberDiv {
+            margin: 0px 20px 30px 0px;
+        }
+
+        b {
+            font-size: 1.5em;
+            color: #6c757d;
+        }
+
+
     </style>
 
 
@@ -45,10 +56,11 @@
         <br><br><br>
         <a href="/"><h3 class="text-muted">주문</h3></a>
     </div>
-    <br>
-    <h4>할당될 주문번호: </h4>
-    <h5 id="abc"></h5>
-    <br>
+    <div id="orderNumberDiv">
+        <b>할당 주문번호 :  </b>
+        <b id="orderNumber"></b>
+    </div>
+
     <table class="table table-hover">
         <thead class="thead-light">
         <tr align = center>
