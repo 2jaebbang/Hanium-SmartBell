@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <script src="../../userMain.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let url = window.location.pathname;
+    let id = url.split('/');
+    userMain(id[2]);
+</script>
+
+<div class="container">
+
+    <h1>주문번호:</h1>
+<h3 id="orderNumber"></h3>
+    <p>
+    <h1>앞에 대기중인 인원:</h1>
+    <h3 id="wait"></h3>
+    <p>
+    <h2 id="size"></h2>
+    <p>
+    <h1>주문목록</h1>
+    <table class="table table-hover">
+        <tbody id="orderListTable">
+        </tbody>
+    </table>
+
+</div> <!-- /container -->
+
+</body>
+</html>

@@ -1,35 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<!--
+Theme by: WebThemez.com
+Title: Vinto Page under construction!!!
+Note: Please use our back link in your site (webthemez.com)
+-->
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]> <html lang="en" class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]>	<html lang="en" class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]>	<html lang="en" class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]>	<html lang="en" class="ie ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-    <meta charset="UTF-8">
-
+    <meta charset="utf-8">
+    <title>Think Of Bell</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+    </style>
     <script src="../../userMain.js"></script>
-    <title>Title</title>
+
+    <meta name="description" content="Ace Page under construction">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,bold">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
-<body>
+<body id="home">
 <script>
     let url = window.location.pathname;
     let id = url.split('/');
     userMain(id[2]);
 </script>
 
-<div class="container">
 
-    <h1>주문번호:</h1>
-<h3 id="orderNumber"></h3>
-    <p>
-    <h1>앞에 대기중인 인원:</h1>
-    <h3 id="wait"></h3>
-    <p>
-    <h2 id="size"></h2>
-    <p>
-    <h1>주문목록</h1>
-    <table class="table table-hover">
-        <tbody id="orderListTable">
-        </tbody>
-    </table>
+<div id="Header">
+    <div class="wrapper">
+        <h1 style="font-size: 80px; font-family: 'Nanum Myeongjo';">
+            Think Of Bell
+        </h1>
+    </div>
+</div>
 
-</div> <!-- /container -->
 
+<div id="Content" class="wrapper">
+    <h2 style="color:white; font-size: 50px; font-family: 'Nanum Gothic';">
+        감사합니다 고객님 !
+    </h2>
+    <h2 style="color:white; font-size: 40px; font-family: 'Nanum Gothic';">
+        주문하신 메뉴를 만드는 중입니다
+    </h2>
+    <div style="border:5px solid; padding:30px; ">
+        <h1 style="font-size: 40px; font-family: 'Nanum Gothic';">주 문 번 호</h1>
+        <p align="center"; style="font-size: 100px; font-family: 'Nanum Gothic';">
+            <B id="orderNumber"></B>
+        </p>
+    </div>
+    <br><br><br>
+    <div style="border:5px solid; padding:30px;">
+        <h1 style="font-size: 40px; font-family: 'Nanum Gothic';">대 기 인 원 / 팀</h1>
+        <p align="center"; style="font-size: 100px; font-family: 'Nanum Gothic';">
+            <b id="wait"></b>
+        </p>
+    </div>
+    <br><br><br>
+    <div style="border:5px solid; padding:30px;">
+        <h1 style="font-size: 40px; font-family: 'Nanum Gothic';">주 문 상 품</h1>
+        <table class="table table-hover">
+            <tbody id="orderListTable">
+            </tbody>
+        </table>
+        <br>
+
+    </div>
+    <br><br><br>
+    <span class="tempBy">All Rights Reserved. '벨에 대한 고민. think of bell.'</span>
+</div>
+<div id="overlay"></div>
+<!--Scripts-->
+<script type="text/javascript" src="../../js/userMain/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../../js/userMain/Backstretch.js"></script>
+<script type="text/javascript" src="../../js/userMain/global.js"></script>
 </body>
 </html>
