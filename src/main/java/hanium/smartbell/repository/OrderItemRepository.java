@@ -28,6 +28,12 @@ public class OrderItemRepository {
         return em.createQuery(query,OrderItem.class).getResultList();
     }
 
+    //해당 itemId의 OrderItem을 검색
+    public List<OrderItem> findOrderByItemId(Long itemId) {
+        String query = "select i from OrderItem i where i.item = "+itemId;
+        return em.createQuery(query, OrderItem.class).getResultList();
+    }
+
     //해당 OrderId의 orderItem 삭제
     public void deleteOrderItem(Long orderId) {
         em.remove(findOrder(orderId));
