@@ -34,6 +34,8 @@ public class OrderController {
         return "orders/orderForm";
     }
 
+
+
 //orderItem가져옴
     @GetMapping(value = "/orders/orderItemListJson")
     @ResponseBody
@@ -41,6 +43,7 @@ public class OrderController {
         List<OrderItem> orderItem = orderItemService.findOrderItems();
         return orderItem;
     }
+
 
 
     @GetMapping(value = "/orders/{orderId}/orderList")
@@ -55,6 +58,15 @@ public class OrderController {
     }
 
 
+    //주문한 아이템 식제
+    @DeleteMapping("/orders/{orderId}/orderList")
+    public String deleteOrderItem(@PathVariable("orderId") Long orderId){
+        orderItemService.deleteOrderItem(orderId);
+        return "orders/orderForm";
+    }
+
+
+    //주문현황
     @GetMapping(value = "/orders/orderStatusListJson")
     @ResponseBody
     public List<Order> orderStatusList() {

@@ -27,4 +27,9 @@ public class OrderItemRepository {
         String query = "select i from OrderItem i where i.order = "+orderId;
         return em.createQuery(query,OrderItem.class).getResultList();
     }
+
+    //해당 OrderId의 orderItem 삭제
+    public void deleteOrderItem(Long orderId) {
+        em.remove(findOrder(orderId));
+    }
 }

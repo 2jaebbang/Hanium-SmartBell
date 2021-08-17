@@ -97,6 +97,16 @@ function enrollOrder(){
 }
 
 function link() {
+    let url = window.location.pathname;       //현재 url주소
+    let orderId = url.split('/');
+    fetch(`http://localhost:8080/orders/${orderId[2]}/orderList`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+        .then((response) => response.json())
+
     location.href = "/order";
     alert("주문이 취소되었습니다.");
 }

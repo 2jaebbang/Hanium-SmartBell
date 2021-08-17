@@ -46,6 +46,12 @@ public class OrderItemService {
     }
 
 
+    //주문아이템 삭제
+    public void deleteOrderItem(Long orderId){
+        orderItemRepository.deleteOrderItem(orderId);
+    }
+
+
 //    /**
 //     * 제조 완료
 //     */
