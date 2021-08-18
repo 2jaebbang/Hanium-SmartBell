@@ -61,7 +61,9 @@ public class OrderController {
     //주문한 아이템 식제
     @DeleteMapping("/orders/{orderId}/orderList")
     public String deleteOrderItem(@PathVariable("orderId") Long orderId){
+
         orderItemService.deleteOrderItem(orderId);
+
         return "orders/orderForm";
     }
 

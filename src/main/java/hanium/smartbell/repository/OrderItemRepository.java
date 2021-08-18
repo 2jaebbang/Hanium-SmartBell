@@ -11,6 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderItemRepository {
     private final EntityManager em;
+
     public void save(OrderItem orderItem) {
         em.persist(orderItem);
     }
@@ -23,10 +24,15 @@ public class OrderItemRepository {
         return em.createQuery("select i from OrderItem i",OrderItem.class).getResultList();
     }
 
-    //해당 orderId의 OrderItem을 검색
+    //해당 orderId의 OrderItem을 검색(여러개)
     public  List<OrderItem> findOrder(Long orderId) {
         String query = "select i from OrderItem i where i.order = "+orderId;
         return em.createQuery(query,OrderItem.class).getResultList();
+    }
+
+    //해당 orderId의 OrderItem을 검색(한개)
+    public  OrderItem findOrderOne(Long orderItemId) {
+        return em.find(OrderItem.class, orderItemId);
     }
 
 
@@ -36,8 +42,10 @@ public class OrderItemRepository {
         return em.createQuery(query, OrderItem.class).getResultList();
     }
 
-    //해당 OrderId의 orderItem 삭제
-    public void deleteOrderItem(Long orderId) {
-        em.remove(findOrder(orderId));
+    //해당 OrderItemId의 orderItem 삭제
+    public void deleteOrderItem(Long orderItemId) {
+        System.out.println(findOrderOne(orderItemId).getOrderItemId());
+
+        em.remove(findOrderOne(orderItemId));
     }
 }

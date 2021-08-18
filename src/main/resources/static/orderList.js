@@ -96,9 +96,10 @@ function enrollOrder(){
     alert("주문이 완료되었습니다.")
 }
 
-function link() {
+function cancelOrder() {
     let url = window.location.pathname;       //현재 url주소
     let orderId = url.split('/');
+    alert(orderId[2]);
     fetch(`http://localhost:8080/orders/${orderId[2]}/orderList`, {
         method: "DELETE",
         headers: {
@@ -107,6 +108,6 @@ function link() {
     })
         .then((response) => response.json())
 
-    location.href = "/order";
+     location.href = "/order";
     alert("주문이 취소되었습니다.");
 }
