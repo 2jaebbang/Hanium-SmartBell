@@ -55,6 +55,7 @@ public class OrderItem implements Serializable {
     }
 
 
+
     //==조회 로직==//
     /** 주문상품 가격 조회 */
     public int getOrderItemTotalPrice() {

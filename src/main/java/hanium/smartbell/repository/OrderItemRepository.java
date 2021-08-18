@@ -14,8 +14,9 @@ public class OrderItemRepository {
     public void save(OrderItem orderItem) {
         em.persist(orderItem);
     }
-    public OrderItem findOne(Long id) {
-        return em.find(OrderItem.class, id);
+
+    public OrderItem findOne(Long orderItemId) {
+        return em.find(OrderItem.class, orderItemId);
     }
 
     public List<OrderItem> findAll() {
@@ -28,9 +29,10 @@ public class OrderItemRepository {
         return em.createQuery(query,OrderItem.class).getResultList();
     }
 
-    //해당 itemId의 OrderItem을 검색
-    public List<OrderItem> findOrderByItemId(Long itemId) {
-        String query = "select i from OrderItem i where i.item = "+itemId;
+
+    //해당 orderItemId의 OrderItem을 검색
+    public List<OrderItem> findOrderItems(Long orderItemId) {
+        String query = "select i from OrderItem i where i.orderItemId = "+orderItemId;
         return em.createQuery(query, OrderItem.class).getResultList();
     }
 

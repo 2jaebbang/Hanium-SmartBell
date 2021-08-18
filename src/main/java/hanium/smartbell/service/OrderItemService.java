@@ -41,25 +41,26 @@ public class OrderItemService {
         return orderItem.getOrder().getOrderId();
     }
 
-
-//    public Long orderItemRate(Long orderId, int rate){
-//        //해당하는 orderId의 orderItem들
-//        List<OrderItem> orderItems = orderItemRepository.findOrder(orderId);
-//
-//        OrderItem orderItem = orderItemRepository.findOne(orderId);
-//        //해당하는 orderId의 orderItem의
-//        List<OrderItem> orderItemsByItemId = orderItemRepository.findOrderByItemId(orderItem.getItem().getId());
-//    }
-
     public List<OrderItem> findOrderItems() {
         return orderItemRepository.findAll();
     }
+
+
+
+    //별점 추가
+    @Transactional
+    public void createOrderItemRate(Long orderItemId, Integer rate) {
+            OrderItem orderItem = orderItemRepository.findOne(orderItemId);
+            orderItem.setRate(rate);
+            orderItemRepository.save(orderItem);
+        }
 
 
     //주문아이템 삭제
     public void deleteOrderItem(Long orderId){
         orderItemRepository.deleteOrderItem(orderId);
     }
+
 
 
 //    /**

@@ -5,9 +5,9 @@ import hanium.smartbell.service.OrderItemService;
 import hanium.smartbell.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,10 +36,15 @@ public class UserController {
     }
 
     //주문한 아이템 별점 추가
-//    @PostMapping(value = "/users/{orderId}/rate")
-//    public String updateUserRate(@PathVariable("orderId") Long orderId) {
-//        orderItemService.
-//    }
+    @PostMapping(value = "/users/{orderId}/rate")
+    public String updateUserRate(@RequestBody Map<Long, Integer> rate) {
+        for(Map.Entry<Long, Integer> entry : rate.entrySet()){
+            System.out.println("tesssssssssssttttttttttttttt");
+            System.out.println(entry.getKey());
+            orderItemService.createOrderItemRate(entry.getKey(), entry.getValue());
+        }
+       return "users/userRate";
+    }
 
 }
 
