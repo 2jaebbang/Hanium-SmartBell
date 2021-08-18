@@ -52,6 +52,11 @@ function userMain(orderId) {
                             let tdAmount = document.createElement("td");
                             tdAmount.innerText = `${amount}`;
 
+                            // // "/" 테이블
+                            // let tdSlash = document.createElement("td");
+                            // tdSlash.innerText = " / ";
+
+
                             trOrderList.appendChild(tdTemperature);
                             trOrderList.appendChild(tdAmount);
 
@@ -69,13 +74,13 @@ function userMain(orderId) {
             }
         })
             .then( ( response) => response.json())
-            .then((data) => {
+            .then((orderedData) => {
                 let countWaitTeam = 0;
-                for(let i=1; i<=data.length; i++) {
-                    let orderStatus = data[i - 1]['status'];
+                for(let i=1; i<=orderedData.length; i++) {
+                    let orderStatus = orderedData[i - 1]['status'];
 
                     if(orderStatus === "ORDERED"){
-                        if(data[i-1]['orderId'] >= orderId)
+                        if(orderedData[i-1]['orderId'] >= orderId)
                             break;
                         countWaitTeam++;
                     }

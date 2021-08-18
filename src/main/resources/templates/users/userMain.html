@@ -17,7 +17,13 @@ Note: Please use our back link in your site (webthemez.com)
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
     </style>
+
+
+    <script type="text/javascript" src="../../js/userMain/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../../js/userMain/Backstretch.js"></script>
+    <script type="text/javascript" src="../../js/userMain/global.js"></script>
     <script src="../../userMain.js"></script>
+
 
     <meta name="description" content="Ace Page under construction">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -34,7 +40,7 @@ Note: Please use our back link in your site (webthemez.com)
 
 <div id="Header">
     <div class="wrapper">
-        <h1 style="font-size: 80px; font-family: 'Nanum Myeongjo';">
+        <h1 class="title" style="font-size: 100px; font-family: 'Nanum Myeongjo';">
             Think Of Bell
         </h1>
     </div>
@@ -42,28 +48,28 @@ Note: Please use our back link in your site (webthemez.com)
 
 
 <div id="Content" class="wrapper">
-    <h2 style="color:white; font-size: 50px; font-family: 'Nanum Gothic';">
+    <h2 style="color:white; font-size: 60px; font-family: 'Nanum Gothic';">
         감사합니다 고객님 !
     </h2>
     <h2 style="color:white; font-size: 40px; font-family: 'Nanum Gothic';">
         주문하신 메뉴를 만드는 중입니다
     </h2>
     <div style="border:5px solid; padding:30px; ">
-        <h1 style="font-size: 40px; font-family: 'Nanum Gothic';">주 문 번 호</h1>
-        <p align="center"; style="font-size: 100px; font-family: 'Nanum Gothic';">
+        <h1 style="font-size: 50px; font-family: 'Nanum Gothic';">주 문 번 호</h1>
+        <p align="center"; style="font-size: 130px; font-family: 'Nanum Gothic';">
             <B id="orderNumber"></B>
         </p>
     </div>
     <br><br><br>
     <div style="border:5px solid; padding:30px;">
-        <h1 style="font-size: 40px; font-family: 'Nanum Gothic';">대 기 인 원 / 팀</h1>
-        <p align="center"; style="font-size: 100px; font-family: 'Nanum Gothic';">
+        <h1 style="font-size: 50px; font-family: 'Nanum Gothic';">대 기 인 원 / 팀</h1>
+        <p align="center"; style="font-size: 130px; font-family: 'Nanum Gothic';">
             <b id="wait"></b>
         </p>
     </div>
     <br><br><br>
     <div style="border:5px solid; padding:30px;">
-        <h1 style="font-size: 40px; font-family: 'Nanum Gothic';">주 문 상 품</h1>
+        <h1 class="orderItem" style="font-size: 50px; font-family: 'Nanum Gothic';">주 문 상 품</h1>
         <table class="table table-hover">
             <tbody id="orderListTable">
             </tbody>
@@ -75,9 +81,7 @@ Note: Please use our back link in your site (webthemez.com)
     <span class="tempBy">All Rights Reserved. '벨에 대한 고민. think of bell.'</span>
 </div>
 <div id="overlay"></div>
-<!--Scripts-->
-<script type="text/javascript" src="../../js/userMain/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="../../js/userMain/Backstretch.js"></script>
-<script type="text/javascript" src="../../js/userMain/global.js"></script>
+
+
 </body>
 </html>

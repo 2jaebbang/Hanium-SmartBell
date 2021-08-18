@@ -39,7 +39,6 @@ public class UserController {
     @PostMapping(value = "/users/{orderId}/rate")
     public String updateUserRate(@RequestBody Map<Long, Integer> rate) {
         for(Map.Entry<Long, Integer> entry : rate.entrySet()){
-            System.out.println("tesssssssssssttttttttttttttt");
             System.out.println(entry.getKey());
             orderItemService.createOrderItemRate(entry.getKey(), entry.getValue());
         }
