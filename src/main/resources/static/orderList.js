@@ -99,7 +99,7 @@ function enrollOrder(){
 function cancelOrder() {
     let url = window.location.pathname;       //현재 url주소
     let orderId = url.split('/');
-    alert(orderId[2]);
+
     fetch(`http://localhost:8080/orders/${orderId[2]}/orderList`, {
         method: "DELETE",
         headers: {

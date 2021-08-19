@@ -59,10 +59,11 @@ public class OrderItemService {
     //주문아이템 삭제
     @Transactional
     public void deleteOrderItem(Long orderId){
-        List<OrderItem> orderItems = orderItemRepository.findOrderItems(orderId);
-        for(int i=0; i<orderItems.size(); i++){
-
-            orderItemRepository.deleteOrderItem(orderItems.get(i).getOrderItemId());
+        List<OrderItem> orderItemList = orderItemRepository.findOrder(orderId);
+        int cnt = orderItemList.size();
+        System.out.println("test"+cnt);
+        for(int i=0; i<cnt; i++){
+            orderItemRepository.deleteOrderItem(orderItemList.get(i).getOrderItemId());
         }
     }
 
