@@ -23,7 +23,7 @@ public class OrderItemService {
 
 
     /**
-     * 주문
+     * 주문아이템
      */
     @Transactional
     public Long orderItem(Long orderId,Long itemId, String temperature, String size, int amount, int sizeUp) {

@@ -91,7 +91,7 @@ function userRate(orderId) {
 }
 
 
-
+//유저 별점페이지 (별점 저장)
 function submitRate() {
     let url = window.location.pathname;       //현재 url주소
     let itemId = url.split('/');

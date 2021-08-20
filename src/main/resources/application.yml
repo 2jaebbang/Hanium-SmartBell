@@ -1,9 +1,16 @@
+#spring:
+#  datasource:
+#    url: jdbc:h2:tcp://localhost/~/smartbell
+#    username: sa
+#    password:
+#    driver-class-name: org.h2.Driver
+
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/smartbell
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/smartbell?serverTimezone=Asia/Seoul
+    username: root
+    password: 1234
 
   jpa:
     hibernate:  #Hibernate를 사용하면 데이터베이스가 변경되더라도 SQL 스크립트를 수정하는등의 작업을 할 필요 x
@@ -21,6 +28,10 @@ spring:
 logging.level:
   org.hibernate.SQL: debug   #로그를 통해 출력
   org.hibernate.type: trace
+
+
+# zxing qr코드
+
 
 
 # static resource

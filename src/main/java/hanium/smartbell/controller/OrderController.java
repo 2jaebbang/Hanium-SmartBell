@@ -1,5 +1,6 @@
 package hanium.smartbell.controller;
 
+import hanium.smartbell.QRUtil;
 import hanium.smartbell.domain.Order;
 import hanium.smartbell.domain.OrderItem;
 import hanium.smartbell.service.OrderItemService;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
 import java.util.List;
 
 @Controller
@@ -45,17 +47,30 @@ public class OrderController {
     }
 
 
-
+//주문
     @GetMapping(value = "/orders/{orderId}/orderList")
     public String createOrderListForm() {
         return "orders/orderList";
     }
 
+
     @PostMapping(value = "/orders/{orderId}/orderList")
     public String createOrderList(@PathVariable("orderId") Long orderId) {
+
+        //QR코드 생성
+        String url = "http://naver.com";
+        int width = 300;
+        int height = 300;
+        String file_path = "/Users/2jaebbang/Desktop"+ File.separator+"qr"+File.separator;
+        String file_name = "qrtest.png";
+        QRUtil.makeQR(url, width, height, file_path, file_name);
+
         orderService.order(orderId);
         return "orders/orderList";
     }
+
+
+
 
 
     //주문한 아이템 식제

@@ -66,7 +66,7 @@ function userMain(orderId) {
                 })
         })
 
-    //현재 주문상태가 ordered인 팀
+    //유저메인페이지 대기인원계산 (현재 주문상태가 ordered인 팀)
         fetch("/orders/orderStatusListJson", {
             headers: {
                 'Content-Type': 'application/json',

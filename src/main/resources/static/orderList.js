@@ -1,3 +1,4 @@
+//주문목록 불러옴
 function orderList(orderId) {
     fetch("/orders/orderItemListJson", {
         headers: {
