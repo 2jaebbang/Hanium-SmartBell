@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap');
+
+input[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+}
+
+input[type=radio] + label {
+    color: #e0e0e0;
+    font-size: 40px;
+    opacity: 0.25;
+}
+
+input[type=radio]:checked + label {
+    color: #000;
+    opacity: 1;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/images/coffee.jpeg");
+    display: block;
+    height: 100vh;
+    -webkit-text-size-adjust: 100%
+}
+
+.wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    width: 140px;
+    height: 45px;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.button:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 30px;
+}

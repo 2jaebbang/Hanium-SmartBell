@@ -1,4 +1,5 @@
 function userRate(orderId) {
+    let rateImo = ["🤮","😖","🤮","😆","😍" ];
     fetch(`/users/${orderId}`, {
         headers: {
             'Content-Type': 'application/json',
@@ -27,12 +28,12 @@ function userRate(orderId) {
                     let name;
                     let temp;
                     let orderItemCnt = 1;
+                    let radioBtnCnt = 1;
                     for (let i = 1; i <= orderItemData.length; i++) {
                         let orderData = orderItemData[i - 1]['order'];
 
                         //orderItemId
                         let orderItemId = orderItemData[i-1]['orderItemId'];
-
                         if (orderData['orderId'] == orderNumber) {
 
                             //상품명 데이터
@@ -70,12 +71,16 @@ function userRate(orderId) {
                                 let inputRate = document.createElement("input");
                                 inputRate.type="radio";
                                 inputRate.name = `option${orderItemCnt}`;
+                                inputRate.id = `radioBtn${radioBtnCnt}`;
                                 inputRate.autocomplete = "off";
-                                inputRate.innerText = `${j}`;
                                 inputRate.value = `${j}`;
                                 divRadioButton.appendChild(inputRate);
-                            }
 
+                                let labelRate = document.createElement("label");
+                                labelRate.setAttribute("for", `radioBtn${radioBtnCnt++}`)
+                                labelRate.innerText = rateImo[j-1];
+                                divRadioButton.appendChild(labelRate);
+                            }
                             //orderItemId 테이블
                             let tdOrderItemId = document.createElement("td");
                             tdOrderItemId.innerText = `${orderItemId}`;
@@ -83,7 +88,8 @@ function userRate(orderId) {
                             trOrderList.appendChild(tdOrderItemId);
 
                             orderItemCnt++;
-                            document.getElementById("orderListTable").appendChild(trOrderList);
+                            document.getElementById("orderListTbody").appendChild(trOrderList);
+
                         }
                     }
                 })

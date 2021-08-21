@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <script src="../../userRate.js"></script>
-
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/stylesRate.css">
+    <title>Think Of Bell</title>
 </head>
 <body>
 <script>
@@ -13,12 +13,50 @@
     userRate(id[2]);
 </script>
 
-<div id="orderItemLength"></div>
-<table id="orderListTable">
+<div style="color:white; text-align:center; transform:translateY(35%);">
+    <h1 style="font-size: 100px;text-align:center; font-family: 'Nanum Gothic';">
+        Think Of Bell
+    </h1>
+    <br>
+    <div style="border:5px solid; padding:10px; width: 700px; height: auto; margin: 0 auto;">
+        <h1 style="font-size: 50px; font-family: 'Nanum Gothic';">
+            감사합니다 !<br><br>
+            주문하신 메뉴가 나왔습니다
+        </h1>
+    </div>
 
-</table>
+    <br>
+    <div style="border:5px solid; padding:10px; width: 700px; height: auto; margin: 0 auto;">
+        <h1 style="font-size: 50px; font-family: 'Nanum Gothic';">
+            별점을 매겨주세요 !
+        </h1>
 
-<button id="submitRate" onclick="submitRate()">submit</button>
+        <div id="orderItemLength"></div>
+        <div style="font-size: 40px; text-align:center;">
+            <table id="orderListTable">
+                <thead>
+                <tr>
+                    <th colspan="2">상품</th>
+                    <th> bad &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp good</th>
+                </tr>
+                </thead>
 
+                <tbody id="orderListTbody"></tbody>
+
+                <tfoot>
+                <tr>
+                    <td colspan="3">
+                        <br>
+                        <div class="wrap">
+                            <button id="submitRate" class="button" onclick="submitRate()">종료</button>
+                        </div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+        <br><br>
+    </div>
+</div>
 </body>
 </html>

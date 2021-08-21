@@ -58,7 +58,7 @@ public class OrderController {
     public String createOrderList(@PathVariable("orderId") Long orderId) {
 
         //QR코드 생성
-        String url = "/${orderId[2]}/main";
+        String url = "/users/"+orderId+"/main";
         int width = 300;
         int height = 300;
         String file_path = "/Users/2jaebbang/Desktop"+ File.separator+"qr"+File.separator;
