@@ -82,7 +82,7 @@ function enrollOrder(){
             for(let i=1; i<=data.length; i++){
                 let order = data[i-1]['order'];
                 console.log(order);
-                fetch(`http://localhost:8080/orders/${orderId[2]}/orderList`, {
+                fetch(`/orders/${orderId[2]}/orderList`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -101,7 +101,7 @@ function cancelOrder() {
     let url = window.location.pathname;       //현재 url주소
     let orderId = url.split('/');
 
-    fetch(`http://localhost:8080/orders/${orderId[2]}/orderList`, {
+    fetch(`/orders/${orderId[2]}/orderList`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",

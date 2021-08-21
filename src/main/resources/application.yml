@@ -8,9 +8,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/smartbell?serverTimezone=Asia/Seoul
-    username: root
-    password: 1234
+    url: jdbc:mysql://smartbell-db.ccqw8nw5mvdf.ap-northeast-2.rds.amazonaws.com:3306/smartbell
+    username: admin
+    password: 12345678
 
   jpa:
     hibernate:  #Hibernate를 사용하면 데이터베이스가 변경되더라도 SQL 스크립트를 수정하는등의 작업을 할 필요 x

@@ -14,13 +14,14 @@ public class QRUtil {
     /**
      * QR코드 유틸
      *
-     * @param url       : QR에 작성할 URL이다
+     * @param url       : QR에 작성할 URL
      * @param width     : QR 이미지 가로사이즈
      * @param height    : QR 이미지 세로사이즈
      * @param file_path : 생성할파일의 디렉토리경로
      * @param file_name : 생성할 파일의 파일명
      */
 
+    //QR코드 생성
     public static void makeQR(String url, int width, int height, String file_path, String file_name) {
         try {
             File file = null;

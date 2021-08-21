@@ -29,7 +29,7 @@ function updateB() {
     let beveragePrice = document.getElementById("updateBPrice").value;
     let beverageSize = document.getElementById("updateBSize").value;
 
-    fetch(`http://localhost:8080/items/${itemId[2]}/edit`, {
+    fetch(`/items/${itemId[2]}/edit`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

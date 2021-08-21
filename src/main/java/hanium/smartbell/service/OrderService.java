@@ -48,7 +48,7 @@ public class OrderService {
     @Transactional
     public Long createOrderIdFirst() {
 
-        //주문 생성   orderItem 여러개 넘기면 여러개 상품 선택 가능
+        //주문 생성
         Order order = Order.createOrderId();
 
         //주문 저장

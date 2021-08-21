@@ -29,7 +29,7 @@ function updateF() {
     let foodPrice = document.getElementById("updateFPrice").value;
     let foodGram = document.getElementById("updateFGram").value;
 
-    fetch(`http://localhost:8080/items/${itemId[2]}/edit`, {
+    fetch(`/items/${itemId[2]}/edit`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

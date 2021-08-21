@@ -8,7 +8,13 @@ function order() {
     })
         .then( ( response) => response.json())
         .then((data) => {
-            document.getElementById("orderNumber").innerText = data[data.length-1]['orderId'];
+            if(data.length == 0){
+                document.getElementById("orderNumber").innerText = '1';
+            } else {
+                document.getElementById("orderNumber").innerText = data[data.length-1]['orderId'];
+            }
+            console.log(data[data.length-1]['orderId']);
+
         })
 
 
