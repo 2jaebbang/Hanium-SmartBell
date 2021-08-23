@@ -1,5 +1,5 @@
 function userRate(orderId) {
-    let rateImo = ["🤮","😖","🤮","😆","😍" ];
+    let rateImo = ["🤮","😖","😐","😆","😍" ];
     fetch(`/users/${orderId}`, {
         headers: {
             'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ for(let [k,v] of map){
 }
 
 
-    fetch(`http://localhost:8080/users/${itemId[2]}/rate`, {
+    fetch(`/users/${itemId[2]}/rate`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
