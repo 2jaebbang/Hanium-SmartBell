@@ -5,12 +5,15 @@ body {
     min-width:960px;
     top:0;
     left:0;
-    position:absolute;
-    height:100%;
     width:100%;
     margin:0;
-    /*background:url("/images/coffee.jpeg");*/
-    background-size:cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/images/coffee.jpeg");
+    display: block;
+    height: 100vh;
+    -webkit-text-size-adjust: 100%
 }
 .ie body {
     filter: dropshadow(color=#000000, offx=0, offy=1);
