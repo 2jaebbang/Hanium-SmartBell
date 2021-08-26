@@ -58,10 +58,12 @@ public class OrderController {
     public String createOrderList(@PathVariable("orderId") Long orderId) {
 
         //QR코드 생성
-        String url = "http://3.36.73.18/users/"+orderId+"/main";
+//        String url = "http://3.36.73.18/users/"+orderId+"/main";
+        String url = "http://localhost:8080/users/"+orderId+"/main";
         int width = 300;
         int height = 300;
-        String file_path = "/home/ubuntu"+ File.separator+"qr"+File.separator;
+//        String file_path = "/home/ubuntu"+ File.separator+"qr"+File.separator;
+        String file_path = "/Users/2jaebbang/Desktop" + File.separator+"qr"+File.separator;
         String file_name = "qrcode.png";
         QRUtil.makeQR(url, width, height, file_path, file_name);
 

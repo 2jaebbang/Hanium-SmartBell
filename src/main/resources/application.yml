@@ -28,10 +28,3 @@ spring:
 logging.level:
   org.hibernate.SQL: debug   #로그를 통해 출력
   org.hibernate.type: trace
-
-
-# zxing qr코드
-
-
-
-# static resource
