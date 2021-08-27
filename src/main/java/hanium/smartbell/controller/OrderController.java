@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import java.io.File;
 import java.util.List;
 
+
+
+
 @Controller
 @RequiredArgsConstructor
 public class OrderController {
@@ -58,22 +61,27 @@ public class OrderController {
     public String createOrderList(@PathVariable("orderId") Long orderId) {
 
         //QR코드 생성
-//        String url = "http://3.36.73.18/users/"+orderId+"/main";
-        String url = "http://localhost:8080/users/"+orderId+"/main";
+        String url = "http://3.36.73.18/users/"+orderId+"/main";
+        //String url = "http://localhost:8080/users/"+orderId+"/main";
         int width = 300;
         int height = 300;
-//        String file_path = "/home/ubuntu"+ File.separator+"qr"+File.separator;
-        String file_path = "/Users/2jaebbang/Desktop" + File.separator+"qr"+File.separator;
+        String file_path = "/home/ubuntu"+ File.separator+"qr"+File.separator;
+        //String file_path = "/Users/2jaebbang/Desktop/hanium_smartbell/smartbell/src/main/resources/static/images/";
         String file_name = "qrcode.png";
         QRUtil.makeQR(url, width, height, file_path, file_name);
 
         orderService.order(orderId);
+
         return "orders/orderList";
     }
 
     //qr코드 출력
     @GetMapping(value = "/orders/qrcode")
-    public String printQrcode() {return "orders/qrcode";}
+    public String printQrcode() {
+        String path = System.getProperty("user.dir");
+        System.out.println("Working Directory = " + path);
+        return "orders/qrcode";
+    }
 
 
 
