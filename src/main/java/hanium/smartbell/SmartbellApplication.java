@@ -8,6 +8,5 @@ public class SmartbellApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SmartbellApplication.class, args);
-
 	}
 }

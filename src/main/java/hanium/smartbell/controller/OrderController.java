@@ -63,8 +63,8 @@ public class OrderController {
         //QR코드 생성
         String url = "http://3.36.73.18/users/"+orderId+"/main";
         //String url = "http://localhost:8080/users/"+orderId+"/main";
-        int width = 300;
-        int height = 300;
+        int width = 500;
+        int height = 500;
         String file_path = "/home/ubuntu"+ File.separator+"qr"+File.separator;
         //String file_path = "/Users/2jaebbang/Desktop/hanium_smartbell/smartbell/src/main/resources/static/images/";
         String file_name = "qrcode.png";

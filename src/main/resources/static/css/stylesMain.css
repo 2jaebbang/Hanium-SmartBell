@@ -7,14 +7,16 @@ body {
     left:0;
     width:100%;
     margin:0;
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
-    /*background-position: center;*/
-    /*background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/images/coffee.jpeg");*/
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/images/coffee.jpeg");
     display: block;
     height: 100vh;
     -webkit-text-size-adjust: 100%
 }
+
 
 #coffeeVideo {
     position: fixed;
@@ -82,9 +84,9 @@ code {
 }
 
 td {
-    font-size: 50px;
+    font-size: 55px;
     font-family: 'Nanum Gothic';
-
+    font-weight: bold;
 }
 
 table{
@@ -164,7 +166,7 @@ a:hover {
     padding: 0px;
     text-align: center;
     font-size: 48px;
-    font-weight: 300;
+    font-weight: bold;
     color:#00D2FF;
 }
 #WindowSlide {
@@ -184,7 +186,7 @@ a:hover {
 #Content h3 {
     text-align: center;
     font-size: 24px;
-    font-weight: normal;
+    font-weight: bold;
     display: block;
     clear: both;
 }
@@ -237,7 +239,7 @@ a:hover {
     display: inline-block;
     margin-left: 10px;
     font-size: 60px;
-    font-weight: normal;
+    font-weight: bold;
     text-align: center;
     margin:0 25px;
     width:100px;
@@ -271,7 +273,7 @@ a:hover {
     border-top: 1px solid #cecece;
     padding-top: 3px;
     font-size: 19px;
-    font-weight: normal;
+    font-weight: bold;
     text-align: center;
 }
 footer{
@@ -304,7 +306,7 @@ footer span{
     .styled div {
         margin-bottom:10px;
         font-size: 40px;
-        font-weight: normal;
+        font-weight: bold;
         text-align: center;
         width:80px;
         border-radius:80px;
@@ -315,7 +317,7 @@ footer span{
         padding: 0px;
         text-align: center;
         font-size: 29px;
-        font-weight: 300;
+        font-weight: bold;
     }
     .styled {
         margin-bottom: 30px;
