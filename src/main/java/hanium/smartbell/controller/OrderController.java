@@ -125,4 +125,10 @@ public class OrderController {
         return "orders/orderStatusTable";
     }
 
+
+    @GetMapping(value = "/firebaseTest")
+    public String firebaseTest(){
+        return "orders/fireBaseMessaging";
+    }
+
 }

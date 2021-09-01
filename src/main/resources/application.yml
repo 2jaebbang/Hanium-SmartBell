@@ -30,6 +30,10 @@ logging.level:
   org.hibernate.type: trace
 
 
+
+
+
+
 #server:
 #  servlet:
 #    context-path: "/img"
