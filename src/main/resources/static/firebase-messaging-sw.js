@@ -1,5 +1,5 @@
-importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/4.8.1/firebase-messaging.js');
+importScripts('https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/5.9.2/firebase-messaging.js');
 
 // Initialize Firebase
 let config = {
@@ -12,9 +12,9 @@ let config = {
     appId: "1:1000310889464:web:166713d00d77f315fd540d"
 };
 
-// firebase.initializeApp(config);
-// const messaging = firebase.messaging();
-//
+firebase.initializeApp(config);
+const messaging = firebase.messaging();
+
 // messaging.setBackgroundMessageHandler(function(payload){
 //
 //     const title = "Hello World";

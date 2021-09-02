@@ -6,6 +6,7 @@
 #    driver-class-name: org.h2.Driver
 
 spring:
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://smartbell-db.ccqw8nw5mvdf.ap-northeast-2.rds.amazonaws.com:3306/smartbell
@@ -24,11 +25,18 @@ spring:
       filter:
         enabled: true
 
+#server:
+#  ssl:
+#    enabled: true
+#    key-store: keystore.p12
+#    key-store-password: 123456
+#    key-store-type: PKCS12
+#    key-alias: bns-ssl
+
 
 logging.level:
   org.hibernate.SQL: debug   #로그를 통해 출력
   org.hibernate.type: trace
-
 
 
 
