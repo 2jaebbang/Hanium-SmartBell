@@ -1,4 +1,4 @@
 package hanium.smartbell;
 
-public class PushAlarm {
+public class jwttest {
 }

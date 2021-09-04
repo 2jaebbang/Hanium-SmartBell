@@ -66,8 +66,9 @@ function orderStatus() {
                 inputC.id="btnC";
                 inputC.value="제조완료";
                 inputC.addEventListener("click", function (){
-                    statusCompleted(orderId);
-                    link();
+                    //statusCompleted(orderId);
+                    //link();
+                    transmitFCM(orderId);
                 });
                 tdStatusButton.appendChild(inputC);
 
@@ -138,4 +139,33 @@ function statusReceived(orderId) {
 
 function link() {
     location.href = "/orderStatusTable";
+}
+
+
+//fcm알림
+function transmitFCM(orderId){
+    console.log("test");
+    fetch("https://fcm.googleapis.com/fcm/send", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "key=AAAA6Ocs2_g:APA91bEFKNDSJJPQtxX50bilCnjm_s4bx1OYwqqq-AwFFCLeP1-Gr59d4XXQXpIhNTNd5isUKv9ii6TUviM2kAtWeLMJm5NGgWOWghms98It7mRF776QiXBuiYvakWEphH1vLOWVy-ui"
+        },
+        body: JSON.stringify({
+            "to" : "dEFie-bubX2vnQ5ubBTApq:APA91bHDc9IEImbKEQnFhg5aZzUFVBx55U1jvfFJj6ByZPOjp3zZtHo5LZpIMM8d6ExE8dN__cQc6c_THSFSBld1dwoXOHOGmpvO9u9arNYah-9Hwoh_Eaqd0fXwVFnva1MECFtmLt6T",
+            "priority" : "high",
+            "notification" : {
+                "body" : "수령 후 별점을 남겨주세요!",
+                "title" : "주문하신 메뉴가 나왔습니다!",
+                "click_action" : `http://localhost:8080/users/${orderId}/rate`
+            },
+            "webpush": {
+                "fcm_options": {
+                    "link": "http://localhost:8080/orderStatusTable"
+                }
+            }
+        }),
+    })
+        .then((response) => response.json())
+        .then((a) => console.log(a));
 }

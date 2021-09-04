@@ -7,9 +7,9 @@
 <body>
 
 <h1> 파이어 메세지</h1>
-<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-messaging.js"></script>
 <script>
     // Initialize Firebase
     let config = {
@@ -34,9 +34,6 @@
         .then(function(token){
             console.log(`token is ${token}`);
 
-            messaging.onMessage(payload => {
-                console.log(payload);
-            })
         })
         .catch(function(arr){
             console.log("Error Occured");
