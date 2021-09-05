@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script type="text/javascript">
+    // 트윗 가져오기
+    function readTweets()
+    {
+      // 알림창 설정체크
+      if (window.webkitNotifications.checkPermission()) {
+        window.webkitNotifications.requestPermission();
+        return;
+      }
+
+      // 트위터 사용자명
+      var username = document.getElementById("username").value;
+      if (username=='') {
+        alert('사용자명을 입력하세요.');
+        document.getElementById("username").focus();
+        return;
+      }
+
+      // Tweeter API를 이용해 타임라인 최신글 하나 가져오기
+      var script = document.createElement("script");
+      script.src = 'http://twitter.com/statuses/user_timeline/'+username+'.json?count=1&callback=fetchTweets';
+      document.body.appendChild(script);
+    }
+
+    // 가져온 트윗 출력 callback
+    function fetchTweets(data)
+    {
+      if (data.length>0) {
+        window.webkitNotifications.createNotification(data[0].user.profile_image_url, data[0].user.name, data[0].text).show();
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+
+<input type="text" id="username" />
+<button onclick="readTweets();">트윗 가져오기</button>
+
+</body>
+</html>

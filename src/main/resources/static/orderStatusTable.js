@@ -108,6 +108,7 @@ function orderStatus() {
 
 
 function statusCompleted(orderId) {
+    
 
     fetch("/orderStatusCompleted", {
         method: "POST",

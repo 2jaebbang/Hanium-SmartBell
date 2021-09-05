@@ -134,4 +134,10 @@ public class OrderController {
     }
 
 
+    @GetMapping(value = "/test")
+    public String test(){
+        return "/test";
+    }
+
+
 }
