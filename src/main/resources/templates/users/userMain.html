@@ -41,6 +41,10 @@ Note: Please use our back link in your site (webthemez.com)
     let url = window.location.pathname;
     let id = url.split('/');
     userMain(id[2]);
+
+    //대기인원 최신화
+    userMainWait(id[2]);
+    setInterval( ()=>userMainWait(id[2]), 5000);
 </script>
 
 

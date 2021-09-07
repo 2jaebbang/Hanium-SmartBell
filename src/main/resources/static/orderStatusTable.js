@@ -66,9 +66,8 @@ function orderStatus() {
                 inputC.id="btnC";
                 inputC.value="제조완료";
                 inputC.addEventListener("click", function (){
-                    //statusCompleted(orderId);
-                    //link();
-                    transmitFCM(orderId);
+                    statusCompleted(orderId);
+                    link();
                 });
                 tdStatusButton.appendChild(inputC);
 
@@ -108,8 +107,6 @@ function orderStatus() {
 
 
 function statusCompleted(orderId) {
-    
-
     fetch("/orderStatusCompleted", {
         method: "POST",
         headers: {
@@ -122,6 +119,7 @@ function statusCompleted(orderId) {
         .then((response) => response.json())
         .then((form) => console.log(form));
 }
+
 
 function statusReceived(orderId) {
 
@@ -169,4 +167,28 @@ function transmitFCM(orderId){
     })
         .then((response) => response.json())
         .then((a) => console.log(a));
+}
+
+
+function notiTest(){
+    let noti = document.getElementById("noti");
+    noti.innerText = "<script type=\"text/javascript\">\n" +
+        "    function showNotification(){\n" +
+        "      const notification = new Notification(\"New message from dcode!\", {\n" +
+        "        body: \"hey mate, how are ya?\"\n" +
+        "      });\n" +
+        "    }\n" +
+        "\n" +
+        "    //default, granted, denied\n" +
+        "    console.log(Notification.permission);\n" +
+        "\n" +
+        "    if(Notification.permission ===\"granted\"){\n" +
+        "      showNotification();\n" +
+        "\n" +
+        "    } else if (Notification.permission !== \"denied\"){\n" +
+        "      Notification.requestPermission().then(permission => {\n" +
+        "          showNotification();\n" +
+        "      })\n" +
+        "    }\n" +
+        "  </script>"
 }

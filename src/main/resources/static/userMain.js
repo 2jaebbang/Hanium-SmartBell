@@ -65,29 +65,38 @@ function userMain(orderId) {
                     }
                 })
         })
+}
 
-    //유저메인페이지 대기인원계산 (현재 주문상태가 ordered인 팀)
-        fetch("/orders/orderStatusListJson", {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+
+function userMainWait(orderId) {
+//유저메인페이지 대기인원계산 (현재 주문상태가 ordered인 팀)
+    fetch("/orders/orderStatusListJson", {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    })
+        .then( ( response) => response.json())
+        .then((orderedData) => {
+            let countWaitTeam = 0;
+            for(let i=1; i<=orderedData.length; i++) {
+                let orderStatus = orderedData[i - 1]['status'];
+
+                if(orderStatus === "ORDERED"){
+                    if(orderedData[i-1]['orderId'] >= orderId)
+                        break;
+                    countWaitTeam++;
+                }
+            }
+            document.getElementById("wait").innerText = countWaitTeam;
+
+
+            //현재의 상품상태가 COMPLETE라면
+            if(orderedData[orderId-1]['status'] ==="COMPLETE")
+            {
+
             }
         })
-            .then( ( response) => response.json())
-            .then((orderedData) => {
-                let countWaitTeam = 0;
-                for(let i=1; i<=orderedData.length; i++) {
-                    let orderStatus = orderedData[i - 1]['status'];
-
-                    if(orderStatus === "ORDERED"){
-                        if(orderedData[i-1]['orderId'] >= orderId)
-                            break;
-                        countWaitTeam++;
-                    }
-                }
-                document.getElementById("wait").innerText = countWaitTeam;
-            })
-
 }
 
 
