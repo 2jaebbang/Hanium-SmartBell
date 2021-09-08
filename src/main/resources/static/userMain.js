@@ -92,10 +92,11 @@ function userMainWait(orderId) {
 
 
             //현재의 상품상태가 COMPLETE라면
-            if(orderedData[orderId-1]['status'] ==="COMPLETE")
+            if(orderedData[orderId-1]['status'] ==="COMPLETED")
             {
+                alert("경고창 문구");
 
-            }
+                    location.href = "https://naver.com/";}
         })
 }
 

@@ -136,7 +136,7 @@ public class OrderController {
 
     @GetMapping(value = "/test")
     public String test(){
-        return "/test";
+        return "orders/test2";
     }
 
 
