@@ -134,10 +134,8 @@ public class OrderController {
     }
 
 
-    @GetMapping(value = "/test")
-    public String test(){
-        return "orders/test2";
-    }
-
-
+//    @GetMapping(value = "/test")
+//    public String test(){
+//        return "orders/test2";
+//    }
 }
