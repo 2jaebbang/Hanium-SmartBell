@@ -5,7 +5,6 @@ window.onload= function () {
     const close = document.getElementById('close');
 
     close.addEventListener('click', ()=>{
-        alert("testsd");
         modal_container.classList.remove('show');
         document.getElementById("player").play();
         document.getElementById("Header").style.position = "relative";

@@ -103,7 +103,6 @@ a:hover {
     height: 119px;
     line-height: 118px;
 }
-
 .wrapper {
     margin: 0 auto;
     width: 920px;
@@ -150,3 +149,8 @@ footer span{
     margin:10px;
 }
 
+.tempBy{
+    display:block;
+    text-align:center;
+    margin-top:40px;
+}

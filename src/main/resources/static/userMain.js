@@ -96,16 +96,26 @@ function userMainWait(orderId) {
             if(orderedData[orderId-1]['status'] ==="COMPLETED")
             {
                 document.getElementById("player").muted = false;
-                alert("경고창 문구");
 
-                    location.href = `http://localhost:8080/users/${orderId}/rate`;
+                const modal_container = document.getElementById('modal_container');
+                document.getElementById("Header").removeAttribute("style");
+
+
+                document.getElementById("Content").removeAttribute("style");
+
+
+                modal_container.classList.add("show");
+                document.getElementById("modalContent1").innerText = "주문하신 상품이 나왔습니다";
+                document.getElementById("modalContent2").innerText = "별점페이지로 넘어갑니다.";
+
+
+                document.getElementById("close").innerText= "확인";
+                document.getElementById("close").onclick= function (){
+                    window.location.href = `https://httpstraffictest-1125509314.ap-northeast-2.elb.amazonaws.com/users/${orderId}/rate`;
+                }
             }
         })
 }
 
-
-function alr(){
-    
-}
 
 
