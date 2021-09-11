@@ -24,23 +24,40 @@ Note: Please use our back link in your site (webthemez.com)
     <script type="text/javascript" src="../../js/userMain/backstretch.min.js"></script>
 
     <script src="../../userMain.js"></script>
+    <script src="../../modal.js"></script>
 
 
     <meta name="description" content="Ace Page under construction">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,bold">
+
     <link rel="stylesheet" type="text/css" href="/css/stylesMain.css">
+    <link rel="stylesheet" type="text/css" href="/css/modal.css">
 </head>
+
+<div class="modal-container show" id="modal_container" >
+    <div class="modal">
+        <h1>Modals are test</h1>
+        <p style="color: black">
+            주문해주셔서 감사합니다.
+        </p>
+        <p style="color: black">
+            알림이 울리면 상품을 수령하시기 바랍니다.
+        </p>
+        <button id="close">
+            close me
+        </button>
+    </div>
+</div>
 <body id="home">
 
-<!--    <video muted autoplay loop id="coffeeVideo">-->
-<!--        <source src="/images/coffee.mp4" type="video/mp4">-->
-<!--    </video>-->
+
 
 <script>
     let url = window.location.pathname;
     let id = url.split('/');
     userMain(id[2]);
+
 
     //대기인원 최신화
     userMainWait(id[2]);
@@ -55,6 +72,7 @@ Note: Please use our back link in your site (webthemez.com)
         </h1>
     </div>
 </div>
+
 
 
 <div id="Content" class="wrapper">
@@ -87,8 +105,17 @@ Note: Please use our back link in your site (webthemez.com)
         <br>
 
     </div>
+
+    <div id="lb-audio">
+        <audio controls autoplay loop muted id="player">
+            <source src="/audios/alarmSound1.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+
     <br><br><br>
     <span class="tempBy">All Rights Reserved. '벨에 대한 고민. think of bell.'</span>
+</div>
 </div>
 <div id="overlay"></div>
 

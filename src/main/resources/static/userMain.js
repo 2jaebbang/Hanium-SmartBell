@@ -61,6 +61,7 @@ function userMain(orderId) {
                             trOrderList.appendChild(tdAmount);
 
                             document.getElementById("orderListTable").appendChild(trOrderList);
+
                         }
                     }
                 })
@@ -94,10 +95,17 @@ function userMainWait(orderId) {
             //현재의 상품상태가 COMPLETE라면
             if(orderedData[orderId-1]['status'] ==="COMPLETED")
             {
+                document.getElementById("player").muted = false;
                 alert("경고창 문구");
 
-                    location.href = "https://naver.com/";}
+                    location.href = `http://localhost:8080/users/${orderId}/rate`;
+            }
         })
+}
+
+
+function alr(){
+    
 }
 
 

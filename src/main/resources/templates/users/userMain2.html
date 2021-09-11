@@ -2,34 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Modal</title>
+    <script src="../../modal.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/modal.css">
 
-    <script src="../../userMain.js"></script>
-    <title>Title</title>
 </head>
+
 <body>
-<script>
-    let url = window.location.pathname;
-    let id = url.split('/');
-    userMain(id[2]);
-</script>
+<div class="modal-container show" id="modal_container">
+    <div class="modal">
+        <h1>Modals are test</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci assumenda ducimus enim error esse est, facilis illum in ipsa laboriosam maiores natus omnis pariatur quas sequi tempore? Iure, quia.
+        </p>
+        <button id="close">
+            close me
+        </button>
+    </div>
+</div>
 
-<div class="container">
+    <div id="lb-audio">
+        <audio controls autoplay loop muted id="player">
+            <source src="/audios/alarmSound1.mp3" type="audio/mp3">
+        </audio>
+    </div>
 
-    <h1>주문번호:</h1>
-<h3 id="orderNumber"></h3>
-    <p>
-    <h1>앞에 대기중인 인원:</h1>
-    <h3 id="wait"></h3>
-    <p>
-    <h2 id="size"></h2>
-    <p>
-    <h1>주문목록</h1>
-    <table class="table table-hover">
-        <tbody id="orderListTable">
-        </tbody>
-    </table>
 
-</div> <!-- /container -->
+    <br><br><br>
+    <span class="tempBy">All Rights Reserved. '벨에 대한 고민. think of bell.'</span>
+</div>
+<div id="overlay"></div>
 
 </body>
 </html>

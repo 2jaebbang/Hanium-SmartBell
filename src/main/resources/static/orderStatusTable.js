@@ -168,27 +168,3 @@ function transmitFCM(orderId){
         .then((response) => response.json())
         .then((a) => console.log(a));
 }
-
-
-function notiTest(){
-    let noti = document.getElementById("noti");
-    noti.innerText = "<script type=\"text/javascript\">\n" +
-        "    function showNotification(){\n" +
-        "      const notification = new Notification(\"New message from dcode!\", {\n" +
-        "        body: \"hey mate, how are ya?\"\n" +
-        "      });\n" +
-        "    }\n" +
-        "\n" +
-        "    //default, granted, denied\n" +
-        "    console.log(Notification.permission);\n" +
-        "\n" +
-        "    if(Notification.permission ===\"granted\"){\n" +
-        "      showNotification();\n" +
-        "\n" +
-        "    } else if (Notification.permission !== \"denied\"){\n" +
-        "      Notification.requestPermission().then(permission => {\n" +
-        "          showNotification();\n" +
-        "      })\n" +
-        "    }\n" +
-        "  </script>"
-}
