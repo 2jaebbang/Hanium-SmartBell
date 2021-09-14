@@ -27,7 +27,7 @@ function list() {
                 document.getElementById("foodTable").appendChild(tr2);
 
                 let td0 = document.createElement("td");
-                td0.innerText = ">사진<";
+                td0.innerText = `${i+1}`;
                 let td1 = document.createElement("td");
                 td1.innerText = `${name}`;
                 let td2 = document.createElement("td");
