@@ -139,7 +139,8 @@ for(let [k,v] of map){
         .then((response) => response.json())
         .then((form) => console.log(form));
 
-    alert("별점이 추가되었습니다.")
+    alert("별점이 추가되었습니다.");
+    window.close();
 }
 
 
