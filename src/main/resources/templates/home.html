@@ -17,33 +17,39 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
 
     <style>
-        * {
+        a, p {
             font-family: 'Gothic A1', sans-serif;
         }
+
+        .btn {
+            margin:0 10px 0 10px;
+        }
+
     </style>
 
     <script src="../order.js"></script>
     <title>Think Of Bell</title>
 </head>
-<body>
-<div class="container" style="height: auto; width: 100%; border:2px solid grey">
+<body style="margin-top: 17vh">
+<div  class="card border-primary mb-3 container" style="height: auto; width: 70%; border:3px solid grey">
     <div class="jumbotron">
-        <h1>THINK OF BELL</h1>
-        <h4>진동벨에 대한 관점을 바꾸다</h4>
-        <p class="lead">등록 기능</p>
-        <p>
-            <a class="btn btn-lg btn-outline-info" href="/items/newBeverage">음료 등록</a>
-            <a class="btn btn-lg btn-outline-info" href="/items/newFood">푸드 등록</a>
-            <a class="btn btn-lg btn-outline-info" href="/items">상품 목록</a>
+        <h1 style="font-size: 70px">THINK OF BELL</h1>
+        <h4 class="text-muted" style="margin-bottom: 7vh">Alarm service actualized by cellphone</h4>
+
+        <p style="font-size: 25px" class="lead">등록 기능</p>
+        <p style="margin-bottom: 5vh">
+            <a class="btn btn-success" href="/items/newBeverage">음료 등록</a>
+            <a class="btn btn-success" href="/items/newFood">푸드 등록</a>
+            <a class="btn btn-success" href="/items">상품 목록</a>
         </p>
-        <p class="lead">주문 기능</p>
+        <p style="font-size: 25px" class="lead">주문 기능</p>
         <p>
-            <a class="btn btn-lg btn-outline-success" href="/order" onclick="createOrderId()">주문</a>
-            <a class="btn btn-lg btn-outline-success" href="/orderStatusTable">주문 현황</a>
+            <a class="btn btn-success" href="/order" onclick="createOrderId()">주문</a>
+            <a class="btn btn-success" href="/orderStatusTable">주문 현황</a>
         </p>
     </div>
 </div>

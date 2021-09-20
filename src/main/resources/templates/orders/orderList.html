@@ -5,16 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-
-      ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <!-- Custom styles for this template -->
     <link href="/css/jumbotron-narrow.css" rel="stylesheet">
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
     <style type="text/css">
         table {
@@ -24,9 +21,21 @@
         }
 
         #orderSubmit {
-            margin: 80px 0px 0px 0px;
+            margin: 40px 0px 20px 0px;
             text-align: center;
             vertical-align: middle;
+        }
+
+        table, a{
+            font-family: 'Gothic A1', sans-serif;
+        }
+        th{
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            margin: 0px 10px 0px 10px;
         }
     </style>
 
@@ -37,7 +46,7 @@
 </head>
 
 
-<body>
+<body style="margin-top: 17vh">
     <script type="text/javascript">
         let url = window.location.pathname;       //현재 url주소
         let orderId = url.split('/');
@@ -45,15 +54,15 @@
 </script>
 
 
-<div class="container">
+    <div class="container card border-primary mb-3 container" style="height: auto; width: 70%; border:3px solid grey"/>
     <div class="header">
-        <a href="/"><h3 class="text-muted">주문확인</h3></a>
+        <a href="/"><h3>Order Confirmation</h3></a>
     </div>
 
 
     <table class="table table-hover">
         <thead class="thead-light">
-        <tr>
+        <tr class="table-info">
             <th>음료</th>
             <th>Hot/Cold</th>
             <th>Size</th>
@@ -66,7 +75,7 @@
 
     <table class="table table-hover">
         <thead class="thead-light">
-        <tr>
+        <tr class="table-info">
             <th>푸드</th>
             <th>수량</th>
         </tr>
@@ -74,10 +83,11 @@
         <tbody id="foodOrderListTable">
         </tbody>
     </table>
+    <div id="orderSubmit">
+        <button class="btn btn-danger" onclick="cancelOrder()">주문취소</button>
+        <button class="btn btn-info" onclick="enrollOrder()">주문완료</button>
+    </div>
 </div> <!-- /container -->
-<div id="orderSubmit">
-    <button class="btn btn-danger" onclick="cancelOrder()">주문취소</button>
-    <button class="btn btn-primary" onclick="enrollOrder()">주문완료</button>
-</div>
+
 </body>
 </html>

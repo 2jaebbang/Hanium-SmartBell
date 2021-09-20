@@ -43,6 +43,7 @@ function order() {
 
                 //이름
                 let tdName = document.createElement("td");
+                tdName.style.verticalAlign = "middle";
                 tdName.innerText = `${name}`;
                 tdName.id=`name${i}`;
 
@@ -58,6 +59,8 @@ function order() {
                   let divT = document.createElement("div");
 
                  divT.classList.add("btn-group");
+                 divT.role = "group";
+                 divT.aria
                  divT.classList.add("btn-group-toggle");
                 divT.id=`divT${i}`;
                  divT.setAttribute("data-toggle","buttons");
@@ -82,7 +85,7 @@ function order() {
 
                 let labelT2 = document.createElement("label");
                 labelT2.classList.add("btn");
-                labelT2.classList.add("btn-primary");
+                labelT2.classList.add("btn-info");
                 labelT2.innerText="COLD";
                 divT.appendChild(labelT2);
 
@@ -158,9 +161,10 @@ function order() {
 
                  //수량선택
                  let tdAmount = document.createElement("td");
+                tdAmount.style.verticalAlign = "middle";
+                tdAmount.style.margin = "auto"
                  let select = document.createElement("select");
-                 select.classList="custom-select";
-                 select.style="width: 100px";
+                 select.classList="form-select";
                  select.id=`select${i}`;
                  let amount = [];
                  amount.push("수량선택");
@@ -196,6 +200,9 @@ function order() {
 
                     trBev.appendChild(tdSizeUp);
                 } else {
+                    tdName.style.width = "43%";
+                    tdAmount.style.width = "14%";
+                    tdOk.style.width = "43%";
                     trFood.appendChild(tdName);
                     trFood.appendChild(tdAmount);
                     trFood.appendChild(tdOk);

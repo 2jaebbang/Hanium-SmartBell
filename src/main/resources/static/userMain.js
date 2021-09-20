@@ -111,7 +111,8 @@ function userMainWait(orderId) {
 
                 document.getElementById("close").innerText= "확인";
                 document.getElementById("close").onclick= function (){
-                    window.location.href = `https://httpstraffictest-1125509314.ap-northeast-2.elb.amazonaws.com/users/${orderId}/rate`;
+                    window.open(`https://httpstraffictest-1125509314.ap-northeast-2.elb.amazonaws.com/users/${orderId}/rate`,"_self");
+                    //window.location.href = `https://httpstraffictest-1125509314.ap-northeast-2.elb.amazonaws.com/users/${orderId}/rate`;
                 }
             }
         })

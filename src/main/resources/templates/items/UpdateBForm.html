@@ -5,22 +5,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-
-    ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <!-- Custom styles for this template -->
     <link href="/css/jumbotron-narrow.css" rel="stylesheet">
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
     <style type="text/css">
         #submit {
             margin: 40px 0px 0px 0px;
             text-align: center;
             vertical-align: middle;
+        }
+
+        h5, input, a{
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: 5vh;
         }
     </style>
 
@@ -29,7 +34,7 @@
 
 
 </head>
-<body>
+<body style="margin-top: 17vh">
 <script>
     let url = window.location.pathname;
     let id = url.split('/');
@@ -37,49 +42,39 @@
     BForm(id[2]);
 </script>
 
-<div class="container">
+<div class="container card border-primary mb-3 container" style="height: auto; width: 70%; border:3px solid grey"/>
     <div class="header">
-        <a href="/"><h3 class="text-muted">음료 수정</h3></a>
+        <a href="/" style="text-decoration: none"><h3>Beverage Modify</h3></a>
     </div>
 
     <form method="post">
         <div class="form-group">
-            <label>상품명</label>
+            <label><h5>상품명</h5></label>
             <input type="text"  class="form-control" id="updateBName"
                    placeholder="이름을 입력하세요">
         </div>
         <div class="form-group">
-            <label th:for="price">가격</label>
+            <label th:for="price"><h5>가격</h5></label>
             <input type="number" class="form-control" id="updateBPrice"
                    placeholder="가격을 입력하세요">
         </div>
         <div class="form-group">
-            <label>사이즈업</label>
+            <label><h5>사이즈업</h5></label>
             <input type="number" class="form-control" id="updateBSize" placeholder="사이즈업 가격을 입력하세요">
         </div>
-
-        <p>
-            상품 사진
-        <p>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile">
-            <label class="custom-file-label" for="customFile">사진 선택</label>
+        </p>
+        <div class="form-group">
+            <label for="formFile" ><h5>상품 사진</h5></label>
+            <input type="file" class="form-control" id="formFile">
         </div>
         <p>
         <p>
 
 <!--            <button type="submit" class="btn btn-primary" onclick="updateB()">수정완료</button>-->
         <div id="submit">
-        <a href="/items" class="btn btn-primary" role="button" onclick="updateB()">수정완료</a>
+        <a style="margin-bottom: 20px" href="/items" class="btn btn-primary" role="button" onclick="updateB()">수정완료</a>
     </div>
-
     </form>
-    <br/>
-    <div>
-        <p>&copy; Think Of BELL V1</p>
-    </div>
 </div> <!-- /container -->
-
 </body>
-
 </html>

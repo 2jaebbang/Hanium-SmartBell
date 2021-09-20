@@ -5,28 +5,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-
-      ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
   <!-- Custom styles for this template -->
   <link href="/css/jumbotron-narrow.css" rel="stylesheet">
-  <!-- Bootstrap CDN -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
   <style type="text/css">
     table {
-      margin: auto;
       text-align: center;
       vertical-align: middle;
     }
 
     #orderSubmit {
-      margin: 80px 0px 0px 0px;
+      margin: 40px 0px 20px 0px;
       text-align: center;
       vertical-align: middle;
+    }
+
+    table, a{
+      font-family: 'Gothic A1', sans-serif;
+    }
+
+    th {
+      font-size: 20px;
+      font-weight: bold;
     }
   </style>
 
@@ -36,17 +41,17 @@
 </head>
 
 
-<body>
+<body style="margin-top: 17vh">
 <script type="text/javascript">list()</script>
 
-<div class="container">
+<div  class="card border-primary mb-3 container" style="height: auto; width: 70%; border:3px solid grey">
   <div class="header">
-    <a href="/"><h3 class="text-muted">상품 목록</h3></a>
+    <a style="text-decoration: none" href="/"><h3>Menu List</h3></a>
   </div>
 
     <table class="table table-hover">
       <thead class="thead-light">
-      <tr>
+      <tr class="table-info">
         <th>음료</th>
         <th>상품명</th>
         <th>가격</th>
@@ -58,9 +63,10 @@
       </tbody>
     </table>
 
+
   <table class="table table-hover">
     <thead class="thead-light">
-      <tr>
+      <tr class="table-info">
         <th>푸드</th>
         <th>상품명</th>
         <th>가격</th>
@@ -71,10 +77,9 @@
       <tbody id="foodTable">
       </tbody>
     </table>
+  <div id="orderSubmit">
+    <a href="/" class="btn btn-primary" role="button" >확인</a>
+  </div>
 </div> <!-- /container -->
-
-<div id="orderSubmit">
-  <a href="/" class="btn btn-primary" role="button" >확인</a>
-</div>
 </body>
 </html>

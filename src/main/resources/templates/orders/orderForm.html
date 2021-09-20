@@ -10,11 +10,10 @@
           crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="/css/jumbotron-narrow.css" rel="stylesheet">
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
 
     <style type="text/css">
         table {
@@ -24,7 +23,7 @@
         }
 
         #orderSubmit {
-            margin: 30px 0px 0px 0px;
+            margin: 40px 0px 20px 0px;
             text-align: center;
             vertical-align: middle;
         }
@@ -33,12 +32,13 @@
             margin: 0px 20px 30px 0px;
         }
 
-        b {
-            font-size: 1.5em;
-            color: #6c757d;
+        table, a{
+            font-family: 'Gothic A1', sans-serif;
         }
 
-
+        b {
+            font-size: 1.5em;
+        }
     </style>
 
 
@@ -48,13 +48,12 @@
 </head>
 
 
-<body>
+<body style="margin-top: 17vh">
 <script type="text/javascript">order()</script>
 
-<div class="container">
+<div class="container card border-primary mb-3 container" style="height: auto; width: 70%; border:3px solid grey"/>
     <div class="header">
-        <br><br><br>
-        <a href="/"><h3 class="text-muted">주문</h3></a>
+        <a href="/" style="text-decoration: none"><h3>Order</h3></a>
     </div>
     <div id="orderNumberDiv">
         <b>할당 주문번호 :  </b>
@@ -90,11 +89,9 @@
         <tbody id="foodTable">
         </tbody>
     </table>
-
-</div> <!-- /container -->
 <div id="orderSubmit">
     <button id="orderCheckBtn" class="btn btn-primary" onclick="orderCheckButton()">주문확인</button>
 </div>
-
+</div> <!-- /container -->
 </body>
 </html>

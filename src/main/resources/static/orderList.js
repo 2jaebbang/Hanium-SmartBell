@@ -20,10 +20,12 @@ function orderList(orderId) {
                     let amount = data[i-1]['amount'];
                     //beverage 테이블
                     let trBev =  document.createElement("tr");
+                    trBev.classList.add("table-success");
                     document.getElementById("beverageOrderListTable").appendChild(trBev);
 
                     //food 테이블
                     let trFood =  document.createElement("tr");
+                    trFood.classList.add("table-success");
                     document.getElementById("foodOrderListTable").appendChild(trFood);
 
 

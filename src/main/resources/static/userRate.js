@@ -1,5 +1,6 @@
 function userRate(orderId) {
     let rateImo = ["🤮","😖","😐","😆","😍" ];
+    let cnt = 0;
     fetch(`/users/${orderId}`, {
         headers: {
             'Content-Type': 'application/json',
@@ -20,8 +21,16 @@ function userRate(orderId) {
                 .then((response) => response.json())
                 .then((orderItemData) => {
                     console.log(orderItemData);
+                    console.log(orderItemData[0]['order']);
+                    for(let i=0; i<orderItemData.length; i++){
+                        let t = orderItemData[i]['order'];
+                        if(t['orderId']== orderId)
+                            cnt++;
+                    }
                     let orderItemLength = document.getElementById("orderItemLength");
-                    orderItemLength.innerText = orderItemData.length;
+
+
+                    orderItemLength.innerText = tempCnt.toString();
                     orderItemLength.id = "orderItemLength";
                     orderItemLength.style.display = "none";
 
@@ -114,10 +123,12 @@ function submitRate() {
     let map = new Map();
 
     //map에 선택된 radiobtn의 value를 넣는다.
+    console.log(orderItemCnt);
 for(let i=1; i<=orderItemCnt; i++) {
-    for(let j=0; j<inputLength; j++) {
-        // console.log(document.getElementsByName(`option${i}`)[j].value);
-        if(document.getElementsByName(`option${i}`)[j].checked == true) {
+    for(let j=0; j<5; j++) {
+         console.log(document.getElementsByName(`option${i}`)[j].checked);
+        if(document.getElementsByName(`option${i}`)[j].checked) {
+            console.log("Good");
             map.set(i,document.getElementsByName(`option${i}`)[j].value);
             break;
         }
@@ -142,5 +153,7 @@ for(let [k,v] of map){
     alert("별점이 추가되었습니다.");
     window.close();
 }
+
+
 
 

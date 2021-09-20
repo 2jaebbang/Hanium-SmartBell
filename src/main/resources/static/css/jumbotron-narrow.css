@@ -22,7 +22,8 @@ body {
     margin-top: 0;
     margin-bottom: 0;
     line-height: 40px;
-    padding-bottom: 19px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 /* Custom page footer */
