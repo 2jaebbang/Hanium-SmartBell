@@ -30,7 +30,7 @@ function userRate(orderId) {
                     let orderItemLength = document.getElementById("orderItemLength");
 
 
-                    orderItemLength.innerText = tempCnt.toString();
+                    orderItemLength.innerText = cnt.toString();
                     orderItemLength.id = "orderItemLength";
                     orderItemLength.style.display = "none";
 
@@ -151,7 +151,7 @@ for(let [k,v] of map){
         .then((form) => console.log(form));
 
     alert("별점이 추가되었습니다.");
-    window.close();
+    window.open('','_self').close();
 }
 
 

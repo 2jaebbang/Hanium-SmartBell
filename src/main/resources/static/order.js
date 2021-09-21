@@ -29,6 +29,8 @@ function order() {
     })
         .then( ( response) => response.json())
         .then((data) => {
+            let cntT = 1;
+            let cntS = 1;
             for(let i=1; i<=data.length; i++){
                 let name = data[i-1]['name'];
                 let sizeUp = data[i-1]['sizeUp'];
@@ -59,44 +61,47 @@ function order() {
                   let divT = document.createElement("div");
 
                  divT.classList.add("btn-group");
-                 divT.role = "group";
-                 divT.aria
-                 divT.classList.add("btn-group-toggle");
                 divT.id=`divT${i}`;
-                 divT.setAttribute("data-toggle","buttons");
                 tdBevTemp.appendChild(divT);
+
+
+                let inputT1 = document.createElement("input");
+                inputT1.type="radio";
+                inputT1.classList.add("btn-check");
+                inputT1.name=`btnradioT${i}`;
+                inputT1.id=`btnradioT${cntT}`;
+                inputT1.value="hot";
+                inputT1.autocomplete="off";
+                inputT1.checked="checked";
+
+                divT.appendChild(inputT1);
 
                  let labelT1 = document.createElement("label");
                  labelT1.classList.add("btn");
-                 labelT1.classList.add("btn-danger");
-                 labelT1.classList.add("active");
+                 labelT1.classList.add("btn-outline-danger");
+                 labelT1.htmlFor = `btnradioT${cntT++}`;
                 labelT1.innerText="HOT";
                  divT.appendChild(labelT1);
 
-                 let inputT1 = document.createElement("input");
-                  inputT1.type="radio";
-                  inputT1.name=`btnradioT${i}`;
-                  inputT1.id="btnradioT1";
-                  inputT1.value="hot";
-                  inputT1.autocomplete="off";
-                  inputT1.checked="checked";
-
-                  labelT1.appendChild(inputT1);
-
-                let labelT2 = document.createElement("label");
-                labelT2.classList.add("btn");
-                labelT2.classList.add("btn-info");
-                labelT2.innerText="COLD";
-                divT.appendChild(labelT2);
 
                 let inputT2 = document.createElement("input");
                 inputT2.type="radio";
+                inputT2.classList.add("btn-check");
                 inputT2.name=`btnradioT${i}`;
-                inputT2.id="btnradioT2";
+                inputT2.id=`btnradioT${cntT}`;
                 inputT2.value="cold";
                 inputT2.autocomplete="off";
 
-                labelT2.appendChild(inputT2);
+                divT.appendChild(inputT2);
+
+                let labelT2 = document.createElement("label");
+                labelT2.classList.add("btn");
+                labelT2.classList.add("btn-outline-info");
+                labelT2.htmlFor = `btnradioT${cntT++}`;
+                labelT2.innerText="COLD";
+                divT.appendChild(labelT2);
+
+
 
 
                 // //beverage 사이즈
@@ -105,57 +110,63 @@ function order() {
                 let divS = document.createElement("div");
 
                 divS.classList.add("btn-group");
-                divS.classList.add("btn-group-toggle");
                 divS.id=`divS${i}`;
-                divS.setAttribute("data-toggle","buttons");
                 tdBevSize.appendChild(divS);
-
-                let labelS1 = document.createElement("label");
-                labelS1.classList.add("btn");
-                labelS1.classList.add("btn-secondary");
-                labelS1.classList.add("active");
-                labelS1.innerText="Tall";
-                divS.appendChild(labelS1);
 
                 let inputS1 = document.createElement("input");
                 inputS1.type="radio";
+                inputS1.classList.add("btn-check");
                 inputS1.name=`btnradioS${i}`;
-                inputS1.id="btnradioS1";
+                inputS1.id=`btnradioS${cntS}`;
                 inputS1.value="tall";
                 inputS1.autocomplete="off";
                 inputS1.checked="checked";
 
-                labelS1.appendChild(inputS1);
+                divS.appendChild(inputS1);
 
-                let labelS2 = document.createElement("label");
-                labelS2.classList.add("btn");
-                labelS2.classList.add("btn-secondary");
-                labelS2.innerText="Grande";
-                divS.appendChild(labelS2);
+                let labelS1 = document.createElement("label");
+                labelS1.classList.add("btn");
+                labelS1.classList.add("btn-outline-secondary");
+                labelS1.htmlFor = `btnradioS${cntS++}`;
+                labelS1.innerText="Tall";
+                divS.appendChild(labelS1);
+
 
                 let inputS2 = document.createElement("input");
                 inputS2.type="radio";
+                inputS2.classList.add("btn-check");
                 inputS2.name=`btnradioS${i}`;
-                inputS2.id="btnradioS2";
+                inputS2.id=`btnradioS${cntS}`;
                 inputS2.value="grande";
                 inputS2.autocomplete="off";
 
-                labelS2.appendChild(inputS2);
+                divS.appendChild(inputS2);
 
-                let labelS3 = document.createElement("label");
-                labelS3.classList.add("btn");
-                labelS3.classList.add("btn-secondary");
-                labelS3.innerText="Venti";
-                divS.appendChild(labelS3);
+                let labelS2 = document.createElement("label");
+                labelS2.classList.add("btn");
+                labelS2.classList.add("btn-outline-secondary");
+                labelS2.htmlFor = `btnradioS${cntS++}`;
+                labelS2.innerText="Grande";
+                divS.appendChild(labelS2);
+
 
                 let inputS3 = document.createElement("input");
                 inputS3.type="radio";
+                inputS3.classList.add("btn-check");
                 inputS3.name=`btnradioS${i}`;
-                inputS3.id="btnradioS3";
+                inputS3.id=`btnradioS${cntS}`;
                 inputS3.value="venti";
                 inputS3.autocomplete="off";
 
-                labelS3.appendChild(inputS3);
+                divS.appendChild(inputS3);
+
+
+                let labelS3 = document.createElement("label");
+                labelS3.classList.add("btn");
+                labelS3.classList.add("btn-outline-secondary");
+                labelS3.htmlFor = `btnradioS${cntS++}`;
+                labelS3.innerText="Venti";
+                divS.appendChild(labelS3);
 
 
 

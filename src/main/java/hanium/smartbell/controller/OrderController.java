@@ -61,7 +61,7 @@ public class OrderController {
     public String createOrderList(@PathVariable("orderId") Long orderId) {
 
         //QR코드 생성
-        String url = "http://3.36.73.18/users/"+orderId+"/main";
+        String url = "http://www.thinkofbell.com/users/"+orderId+"/main";
         //String url = "http://localhost:8080/users/"+orderId+"/main";
         int width = 500;
         int height = 500;
