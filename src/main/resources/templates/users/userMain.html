@@ -31,21 +31,26 @@ Note: Please use our back link in your site (webthemez.com)
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,bold">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="/css/stylesMain.css">
     <link rel="stylesheet" type="text/css" href="/css/modal.css">
 </head>
 
 <div class="modal-container show" id="modal_container" >
-    <div class="modal">
-        <h1>Modals are test</h1>
-        <p id="modalContent1" style="color: black">
-            주문해주셔서 감사합니다.
-        </p>
-        <p id="modalContent2" style="color: black">
-            알림이 울리면 상품을 수령하시기 바랍니다.
-        </p>
-        <button id="close">
-            close me
+    <div class="modal" style="vertical-align: 40vh">
+        <div style="height: 7vh">
+            <p id="modalContent1" style=" font-size: 45px; font-weight: 800; margin-bottom: 25px">
+                주문해주셔서 감사합니다.
+            </p>
+            <p id="modalContent2" style=" font-size: 30px; font-weight: bold">
+                알림이 울리면 상품을 수령하시기 바랍니다.
+            </p>
+        </div>
+        <button id="close" style="font-size: 30px; font-weight: bold; padding: 25px 40px;">
+            확인
         </button>
     </div>
 </div>
@@ -67,7 +72,7 @@ Note: Please use our back link in your site (webthemez.com)
 
 <div id="Header">
     <div class="wrapper">
-        <h1 class="title" style="font-size: 100px; font-family: 'Nanum Gothic';">
+        <h1 class="title" style="font-size: 100px;">
             Think Of Bell
         </h1>
     </div>
@@ -76,28 +81,28 @@ Note: Please use our back link in your site (webthemez.com)
 
 
 <div id="Content" class="wrapper">
-    <h2 style="color:white; font-size: 60px; font-family: 'Nanum Gothic';">
+    <h2 style="color:white; font-size: 60px; ">
         감사합니다 고객님 !
     </h2>
-    <h2 style="color:white; font-size: 40px; font-family: 'Nanum Gothic';">
+    <h2 style="color:white; font-size: 40px; ">
         주문하신 메뉴를 만드는 중입니다
     </h2>
     <div style="border:5px solid; padding:30px; ">
-        <h1 style="font-size: 50px; font-family: 'Nanum Gothic';">주 문 번 호</h1>
-        <p align="center"; style="font-size: 130px; font-family: 'Nanum Gothic';">
+        <h1 style="font-size: 50px;">주 문 번 호</h1>
+        <p align="center"; style="font-size: 130px; ">
             <B id="orderNumber"></B>
         </p>
     </div>
     <br><br><br>
     <div style="border:5px solid; padding:30px;">
-        <h1 style="font-size: 50px; font-family: 'Nanum Gothic';">대 기 인 원 / 팀</h1>
-        <p align="center"; style="font-size: 130px; font-family: 'Nanum Gothic';">
+        <h1 style="font-size: 50px; ">대 기 인 원 / 팀</h1>
+        <p align="center"; style="font-size: 130px; ">
             <b id="wait"></b>
         </p>
     </div>
     <br><br><br>
     <div style="border:5px solid; padding:30px;">
-        <h1 class="orderItem" style="font-size: 50px; font-family: 'Nanum Gothic';">주 문 상 품</h1>
+        <h1 class="orderItem" style="font-size: 50px;">주 문 상 품</h1>
         <table class="table table-hover">
             <tbody id="orderListTable">
             </tbody>
