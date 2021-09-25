@@ -20,12 +20,12 @@ function list() {
 
                 //beverage 테이블
                 let tr1 =  document.createElement("tr");
-                tr1.classList.add("table-success");
+                //tr1.classList.add("table-success");
                 document.getElementById("beverageTable").appendChild(tr1);
 
                 //food 테이블
                 let tr2 =  document.createElement("tr");
-                tr2.classList.add("table-success");
+                //tr2.classList.add("table-success");
                 document.getElementById("foodTable").appendChild(tr2);
 
                 let td0 = document.createElement("td");

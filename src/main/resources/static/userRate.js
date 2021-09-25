@@ -151,7 +151,6 @@ for(let [k,v] of map){
         .then((form) => console.log(form));
 
     alert("별점이 추가되었습니다.");
-    window.open('','_self').close();
 }
 
 
