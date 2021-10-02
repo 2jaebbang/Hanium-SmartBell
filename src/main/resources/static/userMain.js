@@ -92,7 +92,7 @@ function userMainWait(orderId) {
             document.getElementById("wait").innerText = countWaitTeam;
 
 
-            //현재의 상품상태가 COMPLETE라면
+            //현재의 상품상태가 COMPLETE라면 알림
             if(orderedData[orderId-1]['status'] ==="COMPLETED")
             {
                 document.getElementById("player").muted = false;
