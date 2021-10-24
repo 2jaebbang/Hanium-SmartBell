@@ -24,10 +24,10 @@
 ## 구성도
 
 ###서비스 구성도
+<img width="1173" alt="스크린샷 2021-10-10 오후 10 11 25" src="https://user-images.githubusercontent.com/72256238/137921578-161fc5d5-b295-4a07-8830-68b6377b4fff.png">
 
-
-###기능 흐름도
-
+###메뉴 구성도
+<img width="1173" alt="스크린샷 2021-10-10 오후 10 11 46" src="https://user-images.githubusercontent.com/72256238/138116454-4815408b-de7a-4f5e-a79e-922744315c82.png">
 
 
 ## 주요 기술
