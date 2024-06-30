@@ -6,7 +6,7 @@
 어플을 다운 받을 필요가 없는 이 서비스는 QR코드를 통한 구현으로 기존 카페의 진동벨을 대체해, 카페 이용자들에게 편의성과 청결성을 제공한다.
 이와 동시에 카페 점주입장에서 불필요한 진동벨 구매, 보수비용을 절약시킬 수 있다.
 
-## [상세설명](https://splashy-holiday-ac7.notion.site/924a439d65a7478dbd09b69c360230ce)
+## [상세설명](https://splashy-holiday-ac7.notion.site/6fd34120228b48bf930c9cac3e2ad2c1?pvs=25)
 
 ## 주요 기능
 
